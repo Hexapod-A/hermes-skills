@@ -1,0 +1,21 @@
+<div class="canvas {{classes}}">
+  <div class="frame" style="align-items:flex-start;text-align:left">
+    <div class="slide-top">
+      {{>logo}}
+      <div class="counter" data-text><b>{{slide_index}}</b> / {{slide_total}}</div>
+    </div>
+    <div class="stack" style="align-items:flex-start;gap:36px">
+      {{#num}}<div class="slide-num" data-text>{{num}}</div>{{/num}}
+      {{#eyebrow}}<div class="eyebrow" data-text>{{eyebrow}}</div>{{/eyebrow}}
+      <h1 class="headline" data-text data-fit data-max-lines="{{max_lines}}" data-min="56" style="font-size:92px">{{~headline}}</h1>
+      {{#body}}<p class="body" data-text data-fit data-max-lines="5" data-min="28" style="max-width:820px">{{~body}}</p>{{/body}}
+      {{#bullets.length}}<ul class="bullets">{{#bullets}}<li data-text>{{.}}</li>{{/bullets}}</ul>{{/bullets.length}}
+      {{>cta}}
+    </div>
+    <div class="slide-foot">
+      {{^cta}}<span class="small" data-text>{{brand.website}}</span>{{/cta}}{{#cta}}<span></span>{{/cta}}
+      {{^is_last}}<span class="swipe" data-text>Swipe <span class="bar"></span></span>{{/is_last}}
+    </div>
+  </div>
+  {{>decor}}
+</div>

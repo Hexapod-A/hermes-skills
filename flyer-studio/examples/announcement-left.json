@@ -1,0 +1,17 @@
+{
+  "brand": "3xagentic",
+  "layout": "announcement",
+  "name": "speed-to-lead",
+  "sizes": [
+    "square",
+    "portrait"
+  ],
+  "content": {
+    "align": "left",
+    "eyebrow": "For real estate teams",
+    "headline": "Speed to Lead\nWins *Deals*",
+    "body": "Agents who reply first win the listing. We automate the reply, the follow-up and the booking.",
+    "cta": "3xagentic.xyz",
+    "cta_style": "url"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "brand": "3xagentic",
+  "layout": "checklist",
+  "name": "checklist",
+  "sizes": [
+    "portrait",
+    "story"
+  ],
+  "content": {
+    "eyebrow": "Med spas & clinics",
+    "headline": "What Your AI Front Desk *Handles*",
+    "items": [
+      "Answers calls and texts 24/7",
+      "Books, reschedules and confirms",
+      "Sends reminders that cut no-shows",
+      "Follows up on unbooked leads"
+    ],
+    "cta": "3xagentic.xyz"
+  }
+}

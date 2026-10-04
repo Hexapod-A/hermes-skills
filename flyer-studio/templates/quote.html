@@ -1,0 +1,16 @@
+<div class="canvas {{classes}}">
+  <div class="frame">
+    {{>logo}}
+    <div class="stack" style="gap:44px">
+      <svg class="qmark" viewBox="0 0 120 80" aria-hidden="true"><g fill="var(--accent)"><rect x="0" y="0" width="48" height="48"/><rect x="0" y="48" width="24" height="32"/><rect x="66" y="0" width="48" height="48"/><rect x="66" y="48" width="24" height="32"/></g></svg>
+      <blockquote class="quote" data-text data-fit data-max-lines="6" data-min="38">{{~quote}}</blockquote>
+      <div class="who">
+        {{#avatar_url}}<img class="avatar" src="{{avatar_url}}" alt="">{{/avatar_url}}
+        {{^avatar_url}}<div class="avatar" data-text>{{initials}}</div>{{/avatar_url}}
+        <div><div class="who-name" data-text data-role="attribution">{{name}}</div>{{#role}}<div class="who-role" data-text>{{role}}</div>{{/role}}</div>
+      </div>
+      {{>cta}}
+    </div>
+  </div>
+  {{>decor}}
+</div>

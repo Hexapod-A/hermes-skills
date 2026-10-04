@@ -1,0 +1,18 @@
+{
+  "brand": "3xagentic",
+  "layout": "stat",
+  "name": "stat-proof",
+  "sizes": [
+    "square",
+    "portrait"
+  ],
+  "content": {
+    "eyebrow": "Speed to lead",
+    "stat": "5 min",
+    "stat_label": "Reply within *five minutes* or the lead goes cold",
+    "body": "We make sure every new lead gets an answer in seconds, day or night.",
+    "source": "REPLACE with a real, citable source before publishing (example layout only)",
+    "cta": "3xagentic.xyz",
+    "cta_style": "url"
+  }
+}

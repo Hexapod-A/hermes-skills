@@ -1,0 +1,31 @@
+{
+  "brand": "3xagentic",
+  "layout": "offer",
+  "name": "pricing-tiers",
+  "sizes": [
+    "portrait"
+  ],
+  "content": {
+    "eyebrow": "Pricing",
+    "headline": "Pick Where You *Start*",
+    "tiers": [
+      {
+        "name": "Pilot",
+        "price": "$500+",
+        "note": "One workflow, 2 weeks"
+      },
+      {
+        "name": "Starter",
+        "price": "$1k+",
+        "note": "+ $250/mo support",
+        "featured": true
+      },
+      {
+        "name": "Growth",
+        "price": "$2.5k+",
+        "note": "+ $500/mo support"
+      }
+    ],
+    "cta": "3xagentic.xyz"
+  }
+}

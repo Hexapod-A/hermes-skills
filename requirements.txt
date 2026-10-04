@@ -1,0 +1,10 @@
+# Python deps for web-research, lead-gen, video-clipper (install into the repo's .venv, see README)
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+lxml_html_clean>=0.4   # needed by trafilatura with lxml 5+
+trafilatura>=1.12
+openpyxl>=3.1
+dnspython>=2.6
+yt-dlp>=2025.1.1
+faster-whisper>=1.0

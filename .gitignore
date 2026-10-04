@@ -1,0 +1,14 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+out/
+!flyer-studio/examples/out/
+*.html.tmp
+cookies.txt
+*.cookies
+.DS_Store

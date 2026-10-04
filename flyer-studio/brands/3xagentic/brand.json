@@ -1,0 +1,54 @@
+{
+  "name": "3xAgentic",
+  "website": "3xagentic.xyz",
+  "tagline": "AI business automation",
+  "colors": {
+    "bg": "#000000",
+    "fg": "#F1F1F1",
+    "accent": "#FF9900",
+    "muted": "#A6A6A6",
+    "on_accent": "#000000"
+  },
+  "fonts": {
+    "heading": {
+      "family": "DM Sans",
+      "file": "fonts/DMSans-Variable.ttf",
+      "weight_range": "100 1000",
+      "weight": 400,
+      "fallback": "Helvetica, Arial, sans-serif"
+    },
+    "body": {
+      "family": "Plus Jakarta Sans",
+      "file": "fonts/PlusJakartaSans-Variable.ttf",
+      "weight_range": "200 800",
+      "fallback": "Helvetica, Arial, sans-serif"
+    }
+  },
+  "logo": {
+    "file": "logo.svg",
+    "fallback": "logo-interim.png",
+    "alt": "3xAgentic",
+    "notes": "Drop John's real SVG in as logo.svg (white/orange version for dark backgrounds). logo-interim.png is cropped from his own sample flyer and is only used while logo.svg is the placeholder."
+  },
+  "cta": {
+    "style": "pill",
+    "burst": true
+  },
+  "decor": {
+    "style": "pixel-blocks",
+    "stairs": true
+  },
+  "voice": {
+    "tone": "Plain, confident, short. Talks to US small-business owners about time and money, not tech.",
+    "do": [
+      "Concrete outcomes (missed calls, booked appointments, hours saved)",
+      "Title Case headlines, max ~8 words",
+      "One idea per flyer"
+    ],
+    "dont": [
+      "Blockchain, crypto, Web3 or token language: 3xAgentic is AI-only",
+      "Invented stats, client names or testimonials",
+      "Hype words: revolutionary, game-changing, unleash"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "hermes-skills",
+  "private": true,
+  "type": "module",
+  "description": "Shared Node deps for the flyer-studio, docs-and-pdfs and outreach-and-proposals skills.",
+  "dependencies": {
+    "marked": "^14.1.0",
+    "playwright": "^1.63.0",
+    "pngjs": "^7.0.0"
+  }
+}

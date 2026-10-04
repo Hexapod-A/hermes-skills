@@ -1,0 +1,1 @@
+Put the brand font files (.ttf/.otf/.woff2) and their licence files here, then point brand.json at them.

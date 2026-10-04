@@ -1,0 +1,39 @@
+/* Branded document theme: black cover band, white pages, one accent. Brand vars injected by build.mjs. */
+@page { size: var(--page-size, Letter); margin: 20mm 0 22mm 0; }
+@page :first { margin-top: 0; }
+* { box-sizing: border-box; }
+html { font-feature-settings: "kern" 1, "liga" 1, "calt" 0; }
+main { padding: 0 20mm; }
+body { margin: 0; font-family: var(--font-body); font-size: 10.5pt; line-height: 1.55; color: #141414; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.cover { background: var(--bg); color: var(--fg); margin: 0 0 12mm; padding: 16mm 20mm 14mm; position: relative; overflow: hidden; }
+.cover img.logo { height: 13mm; display: block; margin-bottom: 14mm; }
+.cover .brandname { font-family: var(--font-head); font-size: 16pt; margin-bottom: 14mm; }
+.cover h1 { color: var(--fg); font-family: var(--font-head); font-weight: 400; font-size: 30pt; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 4mm; max-width: 80%; }
+.cover .subtitle { font-size: 12.5pt; opacity: .85; margin: 0 0 8mm; max-width: 80%; }
+.cover .meta { display: flex; gap: 10mm; font-size: 9.5pt; color: var(--muted); }
+.cover .meta b { display: block; color: var(--fg); font-weight: 500; font-size: 10.5pt; }
+.cover .blocks { position: absolute; right: 0; bottom: 0; width: 46mm; height: 22mm; }
+.cover .blocks i { position: absolute; background: var(--accent); }
+h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 500; letter-spacing: -0.01em; color: #0a0a0a; break-after: avoid; }
+main h1 { font-size: 22pt; margin: 10mm 0 4mm; }
+h2 { font-size: 15pt; margin: 9mm 0 3mm; padding-top: 3mm; border-top: 2.5pt solid var(--accent); display: inline-block; min-width: 18mm; }
+h2 + * { margin-top: 0; }
+h3 { font-size: 12pt; margin: 6mm 0 2mm; }
+p, ul, ol { margin: 0 0 3.2mm; }
+li { margin: 0 0 1.4mm; }
+ul li::marker { color: var(--accent); }
+a { color: #0a0a0a; text-decoration-color: var(--accent); }
+strong { font-weight: 650; }
+blockquote { margin: 4mm 0; padding: 3mm 5mm; border-left: 3pt solid var(--accent); background: #f6f6f6; }
+table { width: 100%; border-collapse: collapse; margin: 3mm 0 5mm; font-size: 9.5pt; break-inside: avoid; }
+th { text-align: left; font-weight: 600; background: #0a0a0a; color: #fff; padding: 2.4mm 3mm; }
+td { padding: 2.2mm 3mm; border-bottom: .6pt solid #dcdcdc; vertical-align: top; }
+tr:nth-child(even) td { background: #fafafa; }
+code { font-size: 9pt; background: #f2f2f2; padding: .3mm 1.2mm; border-radius: 1mm; }
+pre { background: #f4f4f4; padding: 3mm; border-radius: 1.5mm; white-space: pre-wrap; font-size: 8.8pt; }
+img { max-width: 100%; }
+hr { border: 0; border-top: .6pt solid #dcdcdc; margin: 6mm 0; }
+.page-break { break-after: page; }
+.callout { border: 1pt solid var(--accent); border-radius: 2mm; padding: 3.5mm 5mm; margin: 4mm 0; }
+.signature { display: flex; gap: 14mm; margin-top: 12mm; break-inside: avoid; }
+.signature div { flex: 1; border-top: .8pt solid #0a0a0a; padding-top: 2mm; font-size: 9.5pt; }

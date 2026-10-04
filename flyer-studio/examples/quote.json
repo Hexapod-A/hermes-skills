@@ -1,0 +1,16 @@
+{
+  "brand": "3xagentic",
+  "layout": "quote",
+  "name": "testimonial",
+  "sizes": [
+    "square",
+    "portrait"
+  ],
+  "content": {
+    "quote": "Sample layout. Put a real client quote here, with their permission, exactly as they said it.",
+    "name": "Client Name",
+    "role": "Owner, Business Name",
+    "cta": "3xagentic.xyz",
+    "cta_style": "url"
+  }
+}

@@ -1,0 +1,12 @@
+<div class="canvas {{classes}}">
+  <div class="frame">
+    {{>logo}}
+    <div class="stack" style="gap:40px">
+      {{#eyebrow}}<div class="eyebrow" data-text>{{eyebrow}}</div>{{/eyebrow}}
+      <h1 class="headline" data-text data-fit data-max-lines="{{max_lines}}" data-min="56" style="font-size:84px">{{~headline}}</h1>
+      <ol class="checks">{{#items}}<li><span class="n">{{n}}</span><span data-text data-fit data-max-lines="2" data-min="26">{{text}}</span></li>{{/items}}</ol>
+      {{>cta}}
+    </div>
+  </div>
+  {{>decor}}
+</div>

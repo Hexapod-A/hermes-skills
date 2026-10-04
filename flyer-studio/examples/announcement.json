@@ -1,0 +1,16 @@
+{
+  "brand": "3xagentic",
+  "layout": "announcement",
+  "name": "missed-calls",
+  "sizes": [
+    "square",
+    "portrait",
+    "story",
+    "square-4k"
+  ],
+  "content": {
+    "headline": "Missed Calls Are\nMissed *Money*",
+    "body": "Every unanswered call or web form is a customer calling your competitor. We build systems that reply in seconds, 24/7.",
+    "cta": "3xagentic.xyz"
+  }
+}

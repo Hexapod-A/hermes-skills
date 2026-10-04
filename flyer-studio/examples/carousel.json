@@ -1,0 +1,41 @@
+{
+  "brand": "3xagentic",
+  "layout": "carousel",
+  "name": "carousel",
+  "sizes": [
+    "portrait"
+  ],
+  "content": {
+    "slides": [
+      {
+        "eyebrow": "For home service businesses",
+        "headline": "3 Leaks Costing You *Jobs* Every Week",
+        "decor": "corner"
+      },
+      {
+        "num": "01",
+        "headline": "Missed calls",
+        "body": "After-hours and busy-season calls go to voicemail. Most callers don't leave one. They call the next company.",
+        "decor": "stairs"
+      },
+      {
+        "num": "02",
+        "headline": "Slow quotes",
+        "body": "A quote that takes two days loses to the one that took two hours.",
+        "decor": "stairs"
+      },
+      {
+        "num": "03",
+        "headline": "No follow-up",
+        "body": "Old estimates sit in a spreadsheet. Nobody checks back, so nobody books.",
+        "decor": "stairs"
+      },
+      {
+        "headline": "We Plug All *Three*",
+        "body": "AI that answers, quotes and follows up for you. Start with a 2-week pilot.",
+        "cta": "3xagentic.xyz",
+        "decor": "corner"
+      }
+    ]
+  }
+}

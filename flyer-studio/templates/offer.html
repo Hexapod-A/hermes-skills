@@ -1,0 +1,28 @@
+<div class="canvas {{classes}}">
+  <div class="frame">
+    {{>logo}}
+    <div class="stack" style="gap:34px">
+      {{#eyebrow}}<div class="eyebrow" data-text>{{eyebrow}}</div>{{/eyebrow}}
+      <h1 class="headline" data-text data-fit data-max-lines="{{max_lines}}" data-min="56" style="font-size:88px">{{~headline}}</h1>
+      {{#price}}
+      <div class="price-row">
+        {{#price_from}}<span class="price-from" data-text>{{price_from}}</span>{{/price_from}}
+        <span class="price" data-text data-fit data-max-lines="1" data-min="104">{{price}}</span>
+        {{#price_note}}<span class="price-note" data-text>{{price_note}}</span>{{/price_note}}
+      </div>
+      {{/price}}
+      {{#tiers.length}}
+      <div class="tiers">
+        {{#tiers}}<div class="tier {{#featured}}featured{{/featured}}">
+          <div class="tier-name" data-text>{{name}}</div>
+          <div class="tier-price" data-text data-fit data-max-lines="1" data-min="34">{{price}}</div>
+          {{#note}}<div class="tier-note" data-text>{{note}}</div>{{/note}}
+        </div>{{/tiers}}
+      </div>
+      {{/tiers.length}}
+      {{#bullets.length}}<ul class="bullets">{{#bullets}}<li data-text data-fit data-max-lines="2" data-min="26">{{.}}</li>{{/bullets}}</ul>{{/bullets.length}}
+      {{>cta}}
+    </div>
+  </div>
+  {{>decor}}
+</div>

@@ -1,0 +1,23 @@
+{
+  "brand": "3xagentic",
+  "layout": "offer",
+  "name": "pilot-offer",
+  "sizes": [
+    "square",
+    "portrait",
+    "story"
+  ],
+  "content": {
+    "eyebrow": "2-week pilot",
+    "headline": "One Workflow,\nLive in *14 Days*",
+    "price_from": "from",
+    "price": "$500",
+    "price_note": "one-time",
+    "bullets": [
+      "We map one costly manual task",
+      "Build and run it on your tools",
+      "You see results before you commit"
+    ],
+    "cta": "3xagentic.xyz"
+  }
+}
