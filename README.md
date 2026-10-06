@@ -7,6 +7,7 @@ Skills for John's self-hosted [Hermes Agent](https://github.com/nousresearch/her
 | **flyer-studio** | On-brand social flyers designed in HTML/CSS (real fonts, colours, logo), rendered to PNG by headless Chromium at 1080×1080, 1080×1350, 1080×1920 and 4K, then auto-checked for overflow, collisions, font fallback and contrast. 6 layouts: announcement, offer/pricing, stat/proof, quote/testimonial, carousel, checklist. Ships the 3xAgentic brand kit. No AI image generation. |
 | **web-research** | Search + read live pages, cross-check, answer with numbered sources and dates. |
 | **lead-gen** | US small-business prospect lists from OpenStreetMap + each business's own website, verified fields with evidence URLs, CSV + XLSX. Never contacts anyone. |
+| **maps-lead-gen** | Google Maps playbook for local lists: one niche/area/offer, zip-by-zip pulls (free OpenStreetMap, optional MapsData / Google Places / Serper / RapidAPI), review-count filter, owner-name finder that says "not found" instead of guessing, email waterfall + verification, intent score, dedupe, suppression list, one true local fact per lead, 3-sentence email drafts, call sheet. Drafts only. |
 | **outreach-and-proposals** | Cold email/DM/follow-up drafts for John to send, priced proposals and SOWs as branded PDFs, 3xAgentic pricing guide. |
 | **video-clipper** | yt-dlp download, frame-accurate ffmpeg cuts, 9:16 reframe (crop or blur), faster-whisper word-timed captions burned in. |
 | **docs-and-pdfs** | Markdown/HTML notes to branded PDF (cover, page numbers) and DOCX, with checks. |
@@ -73,6 +74,7 @@ node flyer-studio/scripts/selftest.mjs                                    # flye
 node flyer-studio/scripts/render.mjs flyer-studio/examples/announcement.json --out /tmp/flyers   # 4 PNGs, all "ok"
 .venv/bin/python web-research/scripts/fetch.py https://hermes-agent.nousresearch.com/docs/ --max-chars 300   # web-research
 .venv/bin/python lead-gen/scripts/osm_search.py --city "Boise, Idaho" --category dentist --require-website --limit 5   # lead-gen
+.venv/bin/python maps-lead-gen/tests/test_adapters.py && .venv/bin/python maps-lead-gen/scripts/pull.py --niche dentist --zips 78704 --out /tmp/maps.csv   # maps-lead-gen: OK + "N unique businesses pulled"
 node docs-and-pdfs/scripts/build.mjs outreach-and-proposals/examples/proposal-example.md --out /tmp/proposal.pdf   # outreach-and-proposals
 .venv/bin/python video-clipper/scripts/clip.py make --url "https://www.youtube.com/watch?v=jNQXAC9IVRw" --end 15 --captions --model tiny --out /tmp/short.mp4   # video-clipper
 node docs-and-pdfs/scripts/build.mjs docs-and-pdfs/examples/notes-example.md --out /tmp/notes.pdf   # docs-and-pdfs
@@ -83,6 +85,36 @@ Then in Hermes: `/flyer-studio make a square + story flyer for 3xAgentic: "Your 
 ## The 3xAgentic logo
 
 `flyer-studio/brands/3xagentic/logo.svg` is a **placeholder**. Save John's real SVG over it (same filename, the version that reads on black). Until then the renderer uses `logo-interim.png` (cropped from his own sample post; a little soft at 4K) and prints a `placeholder-logo` warning.
+
+## maps-lead-gen (Google Maps playbook)
+
+A second, separate lead skill built from Christian's (@coldemailchris) "Scrape Local Businesses From Google Maps" course (Oct 2026). `lead-gen` is untouched; use `maps-lead-gen` for volume local lists with owner names, emails, drafts and a call sheet.
+
+Full run, free path (2 zips; stops the owner finder at a 50-row hand-check sheet):
+
+```bash
+bash maps-lead-gen/scripts/pipeline.sh dentist "Austin" TX ~/leads/atx-dentists --zips 78704,78745
+# check ~/leads/atx-dentists/owners_handcheck.xlsx, then:
+OWNER_SAMPLE=0 bash maps-lead-gen/scripts/pipeline.sh dentist "Austin" TX ~/leads/atx-dentists --zips 78704,78745
+```
+
+Output: `leads.xlsx` (Call sheet, Leads, Email drafts, Waterfall log, About). Nothing is ever sent.
+
+Every paid service is optional and switches on only when its key is in `~/.hermes/.env`:
+
+| Env var | Step it switches on | Tested here |
+|---|---|---|
+| `LLM_BASE_URL`, `LLM_API_KEY`, `LLM_MODEL` (or `OPENROUTER_API_KEY` / `OPENAI_API_KEY` / `ANTHROPIC_API_KEY`) | LLM owner finder (regex + guard without it) | live, via an OpenAI-compatible endpoint |
+| `MAPSDATA_API_KEY` | `pull.py --source mapsdata` (Pro/Scale plan for API) | mocked only |
+| `GOOGLE_PLACES_API_KEY` | `pull.py --source google_places` (ratings, review counts, 5 reviews) | mocked only |
+| `SERPER_API_KEY` | `pull.py --source serper`, also website search | mocked only |
+| `RAPIDAPI_KEY` (+ `RAPIDAPI_MAPS_HOST`) | `pull.py --source rapidapi` | mocked only |
+| `PROSPEO_API_KEY`, `ICYPEAS_API_KEY` | email waterfall steps 2 and 3 | mocked only |
+| `MILLIONVERIFIER_API_KEY` | mailbox verification | live against MillionVerifier's test keys + mocked |
+| `BOUNCEBAN_API_KEY` | second check for catch-all domains | mocked only |
+| `SENDER_ADDRESS`, `SENDER_NAME`, `SENDER_COMPANY` | CAN-SPAM footer and signature in drafts | yes |
+
+Add the ones you use to `terminal.env_passthrough` too (the skill also declares them in its SKILL.md, which Hermes passes through when the skill loads). Costs quoted in the article are in `maps-lead-gen/references/playbook.md`. No new Python packages: the existing `requirements.txt` covers it.
 
 ## Rules baked into the skills
 

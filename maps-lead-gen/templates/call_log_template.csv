@@ -1,0 +1,2 @@
+business_name,phone,dialed_at,connected (y/n),connect_hour,outcome,notes
+Example Dental (replace),(512) 555-0100,2026-10-12T10:15:00,y,10,meeting booked Thu 2pm,sample row - delete

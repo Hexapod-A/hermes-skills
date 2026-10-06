@@ -1,0 +1,51 @@
+3 sample email drafts from maps-lead-gen (Austin dentists test, Oct 6 2026). DRAFTS ONLY - nothing was sent.
+Real businesses; owner names were found on each practice's own site. Footer address is a placeholder until SENDER_ADDRESS is set.
+
+To: info@atxfamilydental.com (general inbox, mx_only)
+Subject: 7+ dental offices within 2 miles
+
+Hi Dr. Gutwein,
+
+I counted at least 7 other dental offices within 2 miles of ATX Family Dental on the map. We set up instant replies for dental offices, so every web form or booking request gets a personal text back within 60 seconds while the patient is still deciding. Want me to send over a free 1-page comparison of how ATX Family Dental ranks on Google Maps against the offices around you?
+
+John
+3xAgentic
+
+--
+[YOUR PHYSICAL MAILING ADDRESS - required by CAN-SPAM]
+Not the right person, or not interested? Reply "no" and I won't email again.
+
+==========
+
+To: admin@daybreakdentalcare.com (general inbox, mx_only)
+Subject: 8+ dental offices within 2 miles
+
+Hi Dr. Chang,
+
+I counted at least 8 other dental offices within 2 miles of Daybreak Dental on the map. We set up instant replies for dental offices, so every web form or booking request gets a personal text back within 60 seconds while the patient is still deciding. Want me to send over a free 1-page comparison of how Daybreak Dental ranks on Google Maps against the offices around you?
+
+John
+3xAgentic
+
+--
+[YOUR PHYSICAL MAILING ADDRESS - required by CAN-SPAM]
+Not the right person, or not interested? Reply "no" and I won't email again.
+
+==========
+
+To: patients@solasmileaustin.com (general inbox, mx_only)
+Subject: 5+ dental offices within 2 miles
+
+Hi Dr. Gent,
+
+I counted at least 5 other dental offices within 2 miles of Sola Smile Co. on the map. We set up instant replies for dental offices, so every web form or booking request gets a personal text back within 60 seconds while the patient is still deciding. Want me to send over a free 1-page comparison of how Sola Smile Co. ranks on Google Maps against the offices around you?
+
+John
+3xAgentic
+
+--
+[YOUR PHYSICAL MAILING ADDRESS - required by CAN-SPAM]
+Not the right person, or not interested? Reply "no" and I won't email again.
+
+==========
+
