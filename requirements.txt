@@ -1,4 +1,4 @@
-# Python deps for web-research, lead-gen, video-clipper (install into the repo's .venv, see README)
+# Python deps for web-research, lead-gen, video-clipper, ui-replicate (install into the repo's .venv, see README)
 requests>=2.31
 beautifulsoup4>=4.12
 lxml>=5.0
@@ -8,3 +8,5 @@ openpyxl>=3.1
 dnspython>=2.6
 yt-dlp>=2025.1.1
 faster-whisper>=1.0
+Pillow>=10.0          # ui-replicate image scripts
+numpy>=1.26           # ui-replicate SSIM / palette maths

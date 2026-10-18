@@ -11,6 +11,7 @@ Skills for John's self-hosted [Hermes Agent](https://github.com/nousresearch/her
 | **outreach-and-proposals** | Cold email/DM/follow-up drafts for John to send, priced proposals and SOWs as branded PDFs, 3xAgentic pricing guide. |
 | **video-clipper** | yt-dlp download, frame-accurate ffmpeg cuts, 9:16 reframe (crop or blur), faster-whisper word-timed captions burned in. |
 | **docs-and-pdfs** | Markdown/HTML notes to branded PDF (cover, page numbers) and DOCX, with checks. |
+| **ui-replicate** | Rebuilds a UI in code from a Dribbble/Behance shot, a screenshot or a live URL, then proves the match: full-res reference download, computed-style extraction (fonts, type scale, colours, radii, shadows, spacing), palette and px-grid measuring, self-hosted fonts, screenshots at the reference's exact size, side-by-side sheet, SSIM/layout/colour diff score with the worst regions, and a 390px phone check. |
 | **profile/USER.md** | John's preferences in Hermes' memory format. |
 
 Sample flyers: `flyer-studio/examples/out/`. Sample proposal: `outreach-and-proposals/examples/proposal-example.pdf`.
@@ -38,11 +39,11 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt in
 git clone git@github.com:Hexapod-A/hermes-skills.git ~/.hermes/skills/hermes-skills
 cd ~/.hermes/skills/hermes-skills
 
-# 3. Node deps + headless Chromium (flyer-studio, docs-and-pdfs)
+# 3. Node deps + headless Chromium (flyer-studio, docs-and-pdfs, ui-replicate)
 npm install
 npx playwright install --with-deps chromium
 
-# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper)
+# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, ui-replicate)
 python3 -m venv .venv
 .venv/bin/pip install -U pip
 .venv/bin/pip install -r requirements.txt
@@ -58,7 +59,7 @@ cat profile/USER.md >> ~/.hermes/memories/USER.md
 #      env_passthrough: [SEARXNG_URL, BRAVE_API_KEY, SERPER_API_KEY, TAVILY_API_KEY, OSM_USER_AGENT, HF_TOKEN]
 
 # 7. restart Hermes (new session) and check the skills are listed
-hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs"
+hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate"
 ```
 
 Using a named Hermes profile? Clone into `~/.hermes/profiles/<name>/skills/hermes-skills` instead, and use that profile's `memories/` folder. Prefer keeping the repo elsewhere? Clone to `~/hermes-skills` and add it under `skills.external_dirs` in `config.yaml`.
@@ -78,9 +79,10 @@ node flyer-studio/scripts/render.mjs flyer-studio/examples/announcement.json --o
 node docs-and-pdfs/scripts/build.mjs outreach-and-proposals/examples/proposal-example.md --out /tmp/proposal.pdf   # outreach-and-proposals
 .venv/bin/python video-clipper/scripts/clip.py make --url "https://www.youtube.com/watch?v=jNQXAC9IVRw" --end 15 --captions --model tiny --out /tmp/short.mp4   # video-clipper
 node docs-and-pdfs/scripts/build.mjs docs-and-pdfs/examples/notes-example.md --out /tmp/notes.pdf   # docs-and-pdfs
+.venv/bin/python ui-replicate/tests/test_scripts.py && node ui-replicate/scripts/screenshot.mjs https://example.com --out /tmp/uir --widths 1440,390   # ui-replicate: 11 PASS + 2 PNGs
 ```
 
-Then in Hermes: `/flyer-studio make a square + story flyer for 3xAgentic: "Your Front Desk Never Sleeps"`.
+Then in Hermes: `/flyer-studio make a square + story flyer for 3xAgentic: "Your Front Desk Never Sleeps"`, or `/ui-replicate rebuild this Dribbble shot in Next.js + Tailwind: <link>`.
 
 ## The 3xAgentic logo
 
@@ -116,13 +118,27 @@ Every paid service is optional and switches on only when its key is in `~/.herme
 
 Add the ones you use to `terminal.env_passthrough` too (the skill also declares them in its SKILL.md, which Hermes passes through when the skill loads). Costs quoted in the article are in `maps-lead-gen/references/playbook.md`. No new Python packages: the existing `requirements.txt` covers it.
 
+## ui-replicate (design to code)
+
+Built from the pow-platform job (Oct 2026), where two Dribbble shots and two Webflow sites were rebuilt in Next.js + Tailwind. The skill turns that into a repeatable loop: get the reference at full size, measure it (spec, palette, px grid, fonts), build tokens then components, and verify with a screenshot at the reference's exact size until the score passes.
+
+```bash
+S=ui-replicate/scripts
+.venv/bin/python $S/fetch_ref.py "https://dribbble.com/shots/<id>" --out ~/ui/job/refs --name ref
+.venv/bin/python $S/prep_ref.py ~/ui/job/refs/ref-1.png --trim --width 1440 --out ~/ui/job/refs/ref_1440.png
+bash $S/verify.sh ~/ui/job/refs/ref_1440.png http://localhost:3000/dashboard ~/ui/job/check --name dashboard
+```
+
+`verify.sh` writes a side-by-side sheet (reference | build | mismatch), a 50/50 overlay and a JSON report, and exits `0` (pass) or `2` (below threshold). On the live pow-platform dashboard it scored ssim 0.75 / layout 0.85 / colour 95.0 (pass, `restyle` preset); the peer page scored 0.67 / 0.68 / 88.4 (fail; the gaps are listed in `ui-replicate/references/case-pow-platform.md`). New Python deps: `Pillow`, `numpy`. No API keys.
+
 ## Rules baked into the skills
 
 - Drafts only: the agent never emails, DMs, calls, texts or submits forms to leads or clients without John's OK.
 - No fabricated claims: stat flyers require a source, testimonial flyers require a real name, proposals leave `{{placeholders}}` instead of guessing.
+- No "exact match" claims without proof: ui-replicate reports its diff score and lists what still differs.
 - 3xAgentic is AI-only: never blockchain, crypto or Web3 wording.
 - No secrets in this repo. Keys come from environment variables (`.env.example`).
 
 ## Licences
 
-Code: MIT (`LICENSE`). Fonts: DM Sans and Plus Jakarta Sans, SIL Open Font License 1.1 (licence files next to the fonts). Tools used: Playwright/Chromium, ffmpeg, yt-dlp, faster-whisper, trafilatura, pandoc, OpenStreetMap data (© OpenStreetMap contributors, ODbL).
+Code: MIT (`LICENSE`). Fonts: DM Sans and Plus Jakarta Sans, SIL Open Font License 1.1 (licence files next to the fonts). Tools used: Playwright/Chromium, ffmpeg, yt-dlp, faster-whisper, trafilatura, pandoc, Pillow, numpy, OpenStreetMap data (© OpenStreetMap contributors, ODbL). ui-replicate reads bot-walled design pages through the public r.jina.ai reader. Design references fetched by ui-replicate belong to their designers and are not stored in this repo.
