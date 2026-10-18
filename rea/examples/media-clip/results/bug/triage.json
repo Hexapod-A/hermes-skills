@@ -1,0 +1,98 @@
+{
+  "clusters": [
+    {
+      "case_ids": [
+        "frame@000.000",
+        "frame@000.250",
+        "frame@000.500",
+        "frame@000.750",
+        "frame@001.000",
+        "frame@001.250",
+        "frame@001.500",
+        "frame@001.750",
+        "frame@002.000",
+        "frame@002.250",
+        "frame@002.500",
+        "frame@002.750",
+        "frame@003.000",
+        "frame@003.250",
+        "frame@003.500",
+        "frame@003.750"
+      ],
+      "count": 16,
+      "example_diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 8.56
+        }
+      ],
+      "guess": [
+        "replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer"
+      ],
+      "share_of_failures": 0.6667,
+      "signature": [
+        "frame_mad (value)"
+      ],
+      "smallest_id": "frame@000.000",
+      "smallest_input": {
+        "t": 0.0
+      },
+      "tag_lift": [
+        {
+          "in_all": 0.421,
+          "in_cluster": 1.0,
+          "lift": 2.38,
+          "tag": "source=\"frame\""
+        }
+      ]
+    },
+    {
+      "case_ids": [
+        "audio@000.000",
+        "audio@000.750",
+        "audio@001.000",
+        "audio@001.750",
+        "audio@002.000",
+        "audio@002.750",
+        "audio@003.000",
+        "audio@003.750"
+      ],
+      "count": 8,
+      "example_diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -18.96,
+          "path": "rms_db",
+          "replica": -21.08
+        }
+      ],
+      "guess": [
+        "replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer"
+      ],
+      "share_of_failures": 0.3333,
+      "signature": [
+        "rms_db (value)"
+      ],
+      "smallest_id": "audio@000.000",
+      "smallest_input": {
+        "t": 0.0
+      },
+      "tag_lift": [
+        {
+          "in_all": 0.421,
+          "in_cluster": 1.0,
+          "lift": 2.38,
+          "tag": "source=\"audio\""
+        }
+      ]
+    }
+  ],
+  "clusters_total": 2,
+  "failures": 24,
+  "harness_error_examples": [],
+  "harness_errors": 0
+}

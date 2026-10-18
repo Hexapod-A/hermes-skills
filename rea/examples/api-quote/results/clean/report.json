@@ -1,0 +1,42 @@
+{
+  "all_cases_descriptive_lower_bound": 0.9992726153469561,
+  "cases_needed_zero_fail": 2995,
+  "compared": 4117,
+  "confidence": 0.95,
+  "evidence": {
+    "counts": {
+      "hypothesis": 3,
+      "inferred": 1,
+      "observed": 3
+    },
+    "open_hypotheses": [],
+    "refuted_hypotheses": [
+      "H003"
+    ]
+  },
+  "harness_errors": 0,
+  "lower_bound": 0.9992513473119822,
+  "pass_rate": 1.0,
+  "passed": 4117,
+  "random_compared": 4000,
+  "random_passed": 4000,
+  "reasons": [],
+  "sources": {
+    "boundary": 33,
+    "fixed": 21,
+    "pairwise": 63,
+    "random": 4000
+  },
+  "target": 0.999,
+  "title": "Quote API replica (clean)",
+  "untested": [
+    "concurrency and rate limits",
+    "authentication (the API has none in this test)",
+    "request bodies over 1 MB",
+    "HTTP methods other than GET and POST",
+    "latency and timeouts",
+    "non-UTF-8 bodies",
+    "behaviour after catalog or price changes"
+  ],
+  "verdict": "SUBSTANTIATED"
+}

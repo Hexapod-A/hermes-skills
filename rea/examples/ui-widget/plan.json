@@ -1,0 +1,188 @@
+{
+  "name": "cart-widget",
+  "scope": "cart page at 1440x900 and 390x844: first paint, qty stepper (up, down, to 0, cap at 9), coupon good/bad/lower-case, combined flows",
+  "seed": 3,
+  "template": {
+    "path": "index.html",
+    "viewport": "{viewport}",
+    "actions": "{actions}",
+    "capture": {
+      "text": [
+        "h1",
+        "#qty",
+        "#sub",
+        "#disc",
+        "#vat",
+        "#total",
+        "#msg"
+      ],
+      "boxes": [
+        "header",
+        "#item",
+        "#summary",
+        "#buy",
+        "#coupon"
+      ],
+      "styles": {
+        "#buy": [
+          "background-color",
+          "border-radius",
+          "color",
+          "font-size"
+        ],
+        "#msg": [
+          "color"
+        ],
+        "#summary": [
+          "box-shadow",
+          "border-radius"
+        ]
+      },
+      "attrs": {
+        "#buy": [
+          "disabled"
+        ]
+      },
+      "screenshot": true,
+      "element_shots": [
+        "#buy",
+        "#summary",
+        "#item"
+      ]
+    }
+  },
+  "factors": {
+    "viewport": [
+      [
+        1440,
+        900
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "actions": [
+      [],
+      [
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        }
+      ],
+      [
+        {
+          "click": "#minus"
+        }
+      ],
+      [
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        }
+      ],
+      [
+        {
+          "fill": [
+            "#coupon",
+            "SAVE10"
+          ]
+        },
+        {
+          "press": [
+            "#coupon",
+            "Enter"
+          ]
+        }
+      ],
+      [
+        {
+          "fill": [
+            "#coupon",
+            " save10 "
+          ]
+        },
+        {
+          "press": [
+            "#coupon",
+            "Enter"
+          ]
+        }
+      ],
+      [
+        {
+          "fill": [
+            "#coupon",
+            "FREE"
+          ]
+        },
+        {
+          "press": [
+            "#coupon",
+            "Enter"
+          ]
+        }
+      ],
+      [
+        {
+          "click": "#plus"
+        },
+        {
+          "click": "#plus"
+        },
+        {
+          "fill": [
+            "#coupon",
+            "SAVE10"
+          ]
+        },
+        {
+          "press": [
+            "#coupon",
+            "Enter"
+          ]
+        },
+        {
+          "click": "#minus"
+        }
+      ]
+    ]
+  },
+  "combine": "full",
+  "untested": [
+    "hover and focus states",
+    "other viewports and browser zoom",
+    "fonts other than DejaVu Sans (the box's font)",
+    "animations and transitions",
+    "keyboard-only navigation and screen readers",
+    "Safari and Firefox rendering"
+  ]
+}

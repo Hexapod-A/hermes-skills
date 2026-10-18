@@ -1,0 +1,124 @@
+{
+  "clusters": [
+    {
+      "case_ids": [
+        "d00025",
+        "d00031",
+        "d00044",
+        "d00051",
+        "d00052",
+        "d00063",
+        "d00082",
+        "d00102",
+        "d00115",
+        "d00126",
+        "d00149",
+        "d00161",
+        "d00194",
+        "d00204",
+        "d00215",
+        "d00226",
+        "d00258",
+        "d00263",
+        "d00264",
+        "d00268"
+      ],
+      "count": 122,
+      "example_diffs": [
+        {
+          "kind": "extra_in_replica",
+          "path": "stdout",
+          "replica": ""
+        },
+        {
+          "kind": "missing_in_replica",
+          "original": "6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6uo=",
+          "path": "stdout_b64"
+        }
+      ],
+      "guess": [
+        "replica adds stdout the original does not have",
+        "replica never sets stdout_b64 (schema or branch missing)"
+      ],
+      "share_of_failures": 0.7394,
+      "signature": [
+        "stdout (extra_in_replica)",
+        "stdout_b64 (missing_in_replica)"
+      ],
+      "smallest_id": "d00284",
+      "smallest_input": {
+        "args": [
+          "-d"
+        ],
+        "stdin": "38Ea xa7"
+      },
+      "tag_lift": [
+        {
+          "in_all": 0.99,
+          "in_cluster": 1.0,
+          "lift": 1.01,
+          "tag": "source=\"random\""
+        }
+      ]
+    },
+    {
+      "case_ids": [
+        "d00049",
+        "d00127",
+        "d00166",
+        "d00199",
+        "d00255",
+        "d00266",
+        "d00288",
+        "d00341",
+        "d00349",
+        "d00379",
+        "d00386",
+        "d00422",
+        "d00451",
+        "d00476",
+        "d00481",
+        "d00491",
+        "d00537",
+        "d00566",
+        "d00587",
+        "d00613"
+      ],
+      "count": 43,
+      "example_diffs": [
+        {
+          "kind": "value",
+          "original": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+          "path": "stdout",
+          "replica": ""
+        }
+      ],
+      "guess": [
+        "text differs (message wording, format or encoding)"
+      ],
+      "share_of_failures": 0.2606,
+      "signature": [
+        "stdout (value)"
+      ],
+      "smallest_id": "d00654",
+      "smallest_input": {
+        "args": [
+          "-d"
+        ],
+        "stdin": "bF69E4 0"
+      },
+      "tag_lift": [
+        {
+          "in_all": 0.99,
+          "in_cluster": 1.0,
+          "lift": 1.01,
+          "tag": "source=\"random\""
+        }
+      ]
+    }
+  ],
+  "clusters_total": 2,
+  "failures": 165,
+  "harness_error_examples": [],
+  "harness_errors": 0
+}

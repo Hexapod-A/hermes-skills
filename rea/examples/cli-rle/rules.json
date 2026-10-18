@@ -1,0 +1,12 @@
+{
+  "fields": [
+    "exit",
+    "stdout",
+    "stderr",
+    "stdout_b64",
+    "stderr_b64",
+    "files_out",
+    "timeout"
+  ],
+  "why": "Everything the process shows is compared exactly: exit code, stdout bytes, stderr text, files written."
+}

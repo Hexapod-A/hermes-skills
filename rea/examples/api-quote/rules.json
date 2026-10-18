@@ -1,0 +1,20 @@
+{
+  "fields": [
+    "status",
+    "headers",
+    "body"
+  ],
+  "mask": [
+    {
+      "path": "body.quote_id",
+      "regex": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "replace": "<uuid4>"
+    },
+    {
+      "path": "body.created_at",
+      "regex": "^\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(\\.\\d{6})?\\+00:00$",
+      "replace": "<utc-iso>"
+    }
+  ],
+  "why": "quote_id is a fresh UUID4 and created_at is the server clock on every call in the ORIGINAL too (two identical requests gave different values). They are masked by FORMAT, so a replica with a wrong id or time format still fails."
+}

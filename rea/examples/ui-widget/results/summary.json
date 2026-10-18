@@ -1,0 +1,24 @@
+{
+  "clean": {
+    "passed": 16,
+    "compared": 16,
+    "pass_rate": 1.0,
+    "lower_bound": 0.0,
+    "verdict": "NOT SUBSTANTIATED",
+    "reasons": [
+      "no independently generated random cases; hand-picked checks do not support a statistical claim"
+    ]
+  },
+  "bug": {
+    "passed": 0,
+    "compared": 16,
+    "pass_rate": 0.0,
+    "lower_bound": 0.0,
+    "verdict": "NOT SUBSTANTIATED",
+    "reasons": [
+      "16 of 16 cases fail; fix the mismatch before a fidelity claim",
+      "no independently generated random cases; hand-picked checks do not support a statistical claim"
+    ]
+  },
+  "bug_caught": true
+}

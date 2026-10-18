@@ -1,0 +1,86 @@
+{
+  "name": "kcode-decode",
+  "id_prefix": "d",
+  "scope": "kcode -d on text input (valid and broken encodings), bad usage",
+  "seed": 8,
+  "template": {
+    "args": [
+      "-d"
+    ],
+    "stdin": "{text}"
+  },
+  "defaults": {
+    "text": ""
+  },
+  "fields": {
+    "text": {
+      "type": "string",
+      "alphabet": "0123456789abcdefABCDEF0123456789abcdef\n\rxG ",
+      "min_len": 0,
+      "max_len": 40
+    }
+  },
+  "boundaries": true,
+  "random": 1500,
+  "fixed_cases": [
+    {
+      "name": "valid",
+      "vars": {
+        "text": "0341ff00\n"
+      }
+    },
+    {
+      "name": "zero run",
+      "vars": {
+        "text": "0041"
+      }
+    },
+    {
+      "name": "crlf",
+      "vars": {
+        "text": "0141\r\n"
+      }
+    },
+    {
+      "name": "upper hex",
+      "vars": {
+        "text": "0A4B"
+      }
+    },
+    {
+      "name": "no args",
+      "input": {
+        "args": [],
+        "stdin": ""
+      }
+    },
+    {
+      "name": "two args",
+      "input": {
+        "args": [
+          "-e",
+          "-d"
+        ],
+        "stdin": ""
+      }
+    },
+    {
+      "name": "bad flag",
+      "input": {
+        "args": [
+          "-x"
+        ],
+        "stdin": "abc"
+      }
+    },
+    {
+      "name": "inner newline",
+      "vars": {
+        "text": "01\n41"
+      }
+    }
+  ],
+  "untested": [
+    "decode outputs over 1 MiB"
+  ]
+}

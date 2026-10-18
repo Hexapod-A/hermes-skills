@@ -1,0 +1,22 @@
+{
+  "fields": [
+    "text",
+    "boxes",
+    "styles",
+    "attrs",
+    "screenshot",
+    "page_errors",
+    "title",
+    "element_shots"
+  ],
+  "tol": {
+    "boxes.*": 1
+  },
+  "images": [
+    "screenshot",
+    "element_shots.*"
+  ],
+  "image_tol": 16,
+  "image_max_diff": 0.001,
+  "why": "Boxes may differ by 1 px (sub-pixel rounding between grid and flex layouts). Screenshots (whole viewport and per part) pass when at most 0.1% of pixels differ by more than 16/255 in grey level. Per-part shots are there because a whole-page threshold can hide a small part that changed. Text, styles and attributes are exact."
+}

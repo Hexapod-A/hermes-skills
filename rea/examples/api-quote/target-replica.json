@@ -1,0 +1,10 @@
+{
+  "kind": "http",
+  "name": "replica",
+  "base_url": "http://127.0.0.1:8702",
+  "headers_keep": [
+    "content-type",
+    "allow"
+  ],
+  "timeout": 10
+}

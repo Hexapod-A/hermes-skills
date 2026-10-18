@@ -1,0 +1,29 @@
+{
+  "all_cases_descriptive_lower_bound": 0.9990114719884945,
+  "cases_needed_zero_fail": 2995,
+  "compared": 3029,
+  "confidence": 0.95,
+  "evidence": null,
+  "harness_errors": 0,
+  "lower_bound": 0.9990019209880034,
+  "pass_rate": 1.0,
+  "passed": 3029,
+  "random_compared": 3000,
+  "random_passed": 3000,
+  "reasons": [],
+  "sources": {
+    "boundary": 5,
+    "factor": 16,
+    "fixed": 8,
+    "random": 3000
+  },
+  "target": 0.999,
+  "title": "kcode replica (clean)",
+  "untested": [
+    "inputs over 1 MiB (the original reads at most 1 MiB; behaviour past it not probed)",
+    "stdin closed early / pipes that fail",
+    "locale or terminal settings",
+    "decode outputs over 1 MiB"
+  ],
+  "verdict": "SUBSTANTIATED"
+}

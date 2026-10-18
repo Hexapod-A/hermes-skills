@@ -1,0 +1,10 @@
+{
+  "kind": "http",
+  "name": "original",
+  "base_url": "http://127.0.0.1:8701",
+  "headers_keep": [
+    "content-type",
+    "allow"
+  ],
+  "timeout": 10
+}

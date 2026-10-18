@@ -1,0 +1,30 @@
+{
+  "all_cases_descriptive_lower_bound": 0.9241923483170355,
+  "cases_needed_zero_fail": 2995,
+  "compared": 38,
+  "confidence": 0.95,
+  "evidence": null,
+  "harness_errors": 0,
+  "lower_bound": 0.0,
+  "pass_rate": 1.0,
+  "passed": 38,
+  "random_compared": 0,
+  "random_passed": 0,
+  "reasons": [
+    "no independently generated random cases; hand-picked checks do not support a statistical claim"
+  ],
+  "sources": {
+    "audio": 16,
+    "frame": 16,
+    "meta": 6
+  },
+  "target": 0.999,
+  "title": "Media replica (clean)",
+  "untested": [
+    "colour accuracy (frames are compared in grey)",
+    "fine detail below 32x18 (see ssim/psnr info)",
+    "audio pitch and timbre (only loudness per window is compared)",
+    "subtitles, chapters, metadata tags"
+  ],
+  "verdict": "NOT SUBSTANTIATED"
+}

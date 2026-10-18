@@ -1,0 +1,69 @@
+{
+  "clusters": [
+    {
+      "case_ids": [
+        "b00009",
+        "b00010",
+        "b00011",
+        "b00012",
+        "b00013",
+        "b00014",
+        "b00015",
+        "b00016",
+        "b00017",
+        "b00018",
+        "b00021",
+        "b00024",
+        "b00027",
+        "b00028",
+        "b00033",
+        "b00036",
+        "b00037",
+        "b00038",
+        "b00039",
+        "b00040"
+      ],
+      "count": 765,
+      "example_diffs": [
+        {
+          "kind": "value",
+          "original": "FFFF\n",
+          "path": "stdout",
+          "replica": "0000\n"
+        }
+      ],
+      "guess": [
+        "text differs (message wording, format or encoding)"
+      ],
+      "share_of_failures": 1.0,
+      "signature": [
+        "stdout (value)"
+      ],
+      "smallest_id": "b00009",
+      "smallest_input": {
+        "args": [
+          "-c"
+        ],
+        "stdin_hex": ""
+      },
+      "tag_lift": [
+        {
+          "in_all": 0.253,
+          "in_cluster": 1.0,
+          "lift": 3.96,
+          "tag": "var.mode=\"-c\""
+        },
+        {
+          "in_all": 0.99,
+          "in_cluster": 0.99,
+          "lift": 1.0,
+          "tag": "source=\"random\""
+        }
+      ]
+    }
+  ],
+  "clusters_total": 1,
+  "failures": 765,
+  "harness_error_examples": [],
+  "harness_errors": 0
+}

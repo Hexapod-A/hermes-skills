@@ -1,0 +1,17 @@
+{
+  "name": "my-api",
+  "scope": "POST /v1/quote with sku and qty from the declared ranges; no auth",
+  "seed": 20261018,
+  "template": {"method": "POST", "path": "/v1/quote", "json": {"sku": "{sku}", "qty": "{qty}"}},
+  "defaults": {"sku": "BK-101", "qty": 1},
+  "factors": {"sku": ["BK-101", "UNKNOWN"], "qty": [0, 1, 50, 501]},
+  "combine": "pairwise",
+  "fields": {
+    "sku": {"type": "choice", "values": ["BK-101", "BK-205", "UNKNOWN"], "weights": [4, 4, 1]},
+    "qty": {"type": "int", "min": 0, "max": 500, "null_prob": 0.01, "omit_prob": 0.01}
+  },
+  "boundaries": true,
+  "random": 4000,
+  "fixed_cases": [{"name": "wrong method", "input": {"method": "GET", "path": "/v1/quote"}}],
+  "untested": ["auth", "load and concurrency", "inputs larger than 1 MB"]
+}

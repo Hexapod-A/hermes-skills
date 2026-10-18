@@ -1,0 +1,283 @@
+{
+  "name": "quote-api",
+  "scope": "POST /v1/quote with JSON bodies (valid, invalid, wrong types), GET /v1/skus, /v1/health, wrong method, unknown path; single requests, no auth, no concurrency",
+  "seed": 20261018,
+  "template": {
+    "method": "POST",
+    "path": "/v1/quote",
+    "json": {
+      "sku": "{sku}",
+      "qty": "{qty}",
+      "coupon": "{coupon}",
+      "express": "{express}"
+    }
+  },
+  "defaults": {
+    "sku": "BK-101",
+    "qty": 1,
+    "coupon": "__omit__",
+    "express": "__omit__"
+  },
+  "factors": {
+    "sku": [
+      "BK-101",
+      "BK-205",
+      "PN-002",
+      "NB-010",
+      "TB-300",
+      "bk-101",
+      "XX-000"
+    ],
+    "qty": [
+      1,
+      2,
+      49,
+      50,
+      51,
+      499,
+      500,
+      0,
+      501
+    ],
+    "coupon": [
+      "__omit__",
+      "",
+      "SAVE10",
+      " save10 ",
+      "BULK",
+      "FREE"
+    ],
+    "express": [
+      "__omit__",
+      true,
+      false
+    ]
+  },
+  "combine": "pairwise",
+  "fields": {
+    "sku": {
+      "type": "choice",
+      "values": [
+        "BK-101",
+        "BK-205",
+        "PN-002",
+        "NB-010",
+        "TB-300",
+        "bk-101",
+        "XX-000",
+        ""
+      ],
+      "weights": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1,
+        1,
+        1
+      ],
+      "null_prob": 0.01,
+      "omit_prob": 0.01
+    },
+    "qty": {
+      "type": "int",
+      "min": -2,
+      "max": 502,
+      "null_prob": 0.01,
+      "omit_prob": 0.01
+    },
+    "coupon": {
+      "type": "choice",
+      "values": [
+        "",
+        "SAVE10",
+        "save10",
+        " SAVE10 ",
+        "BULK",
+        "bulk ",
+        "FREE",
+        "SAVE 10"
+      ],
+      "weights": [
+        2,
+        3,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1
+      ],
+      "omit_prob": 0.3
+    },
+    "express": {
+      "type": "bool",
+      "omit_prob": 0.3
+    }
+  },
+  "boundaries": true,
+  "random": 4000,
+  "fixed_cases": [
+    {
+      "name": "qty as string",
+      "vars": {
+        "qty": "5"
+      }
+    },
+    {
+      "name": "qty as float",
+      "vars": {
+        "qty": 2.5
+      }
+    },
+    {
+      "name": "qty 5.0 float",
+      "vars": {
+        "qty": 5.0
+      }
+    },
+    {
+      "name": "qty as bool",
+      "vars": {
+        "qty": true
+      }
+    },
+    {
+      "name": "qty huge",
+      "vars": {
+        "qty": 100000000000000000000
+      }
+    },
+    {
+      "name": "sku as number",
+      "vars": {
+        "sku": 123
+      }
+    },
+    {
+      "name": "coupon number",
+      "vars": {
+        "coupon": 5
+      }
+    },
+    {
+      "name": "coupon false",
+      "vars": {
+        "coupon": false
+      }
+    },
+    {
+      "name": "coupon zero",
+      "vars": {
+        "coupon": 0
+      }
+    },
+    {
+      "name": "express string",
+      "vars": {
+        "express": "yes"
+      }
+    },
+    {
+      "name": "express null",
+      "vars": {
+        "express": null
+      }
+    },
+    {
+      "name": "body is a list",
+      "input": {
+        "method": "POST",
+        "path": "/v1/quote",
+        "json": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "name": "body is a string",
+      "input": {
+        "method": "POST",
+        "path": "/v1/quote",
+        "json": "hi"
+      }
+    },
+    {
+      "name": "invalid json",
+      "input": {
+        "method": "POST",
+        "path": "/v1/quote",
+        "body": "{sku: BK-101",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "name": "empty body",
+      "input": {
+        "method": "POST",
+        "path": "/v1/quote",
+        "body": ""
+      }
+    },
+    {
+      "name": "GET quote",
+      "input": {
+        "method": "GET",
+        "path": "/v1/quote"
+      }
+    },
+    {
+      "name": "skus",
+      "input": {
+        "method": "GET",
+        "path": "/v1/skus"
+      }
+    },
+    {
+      "name": "health",
+      "input": {
+        "method": "GET",
+        "path": "/v1/health"
+      }
+    },
+    {
+      "name": "unknown path",
+      "input": {
+        "method": "GET",
+        "path": "/v2/nothing"
+      }
+    },
+    {
+      "name": "POST unknown path",
+      "input": {
+        "method": "POST",
+        "path": "/v1/quotes",
+        "json": {}
+      }
+    },
+    {
+      "name": "query string on quote",
+      "input": {
+        "method": "POST",
+        "path": "/v1/quote?debug=1",
+        "json": {
+          "sku": "PN-002",
+          "qty": 7
+        }
+      }
+    }
+  ],
+  "untested": [
+    "concurrency and rate limits",
+    "authentication (the API has none in this test)",
+    "request bodies over 1 MB",
+    "HTTP methods other than GET and POST",
+    "latency and timeouts",
+    "non-UTF-8 bodies",
+    "behaviour after catalog or price changes"
+  ]
+}

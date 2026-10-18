@@ -1,0 +1,482 @@
+{
+  "info": {
+    "original": {
+      "acodec": "aac",
+      "channels": 1,
+      "duration": 4.0,
+      "fps": 25.0,
+      "height": 180,
+      "sample_rate": 48000,
+      "vcodec": "h264",
+      "width": 320
+    },
+    "psnr_db": 34.986651,
+    "replica": {
+      "acodec": "aac",
+      "channels": 1,
+      "duration": 4.0,
+      "fps": 25.0,
+      "height": 180,
+      "sample_rate": 48000,
+      "vcodec": "h264",
+      "width": 320
+    },
+    "ssim": 0.971188,
+    "timeline": {
+      "mean_frame_diff_at_shift": 0.63,
+      "meaning": "no shift found",
+      "shift_s": 0.0
+    }
+  },
+  "results": [
+    {
+      "diffs": [],
+      "id": "meta.width",
+      "input": {
+        "check": "width"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.height",
+      "input": {
+        "check": "height"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.fps",
+      "input": {
+        "check": "fps"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.sample_rate",
+      "input": {
+        "check": "sample_rate"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.channels",
+      "input": {
+        "check": "channels"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.duration",
+      "input": {
+        "check": "duration",
+        "tolerance_s": 0.04
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@000.000",
+      "input": {
+        "t": 0.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@000.250",
+      "input": {
+        "t": 0.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@000.500",
+      "input": {
+        "t": 0.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@000.750",
+      "input": {
+        "t": 0.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@001.000",
+      "input": {
+        "t": 1.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@001.250",
+      "input": {
+        "t": 1.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@001.500",
+      "input": {
+        "t": 1.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@001.750",
+      "input": {
+        "t": 1.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@002.000",
+      "input": {
+        "t": 2.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@002.250",
+      "input": {
+        "t": 2.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@002.500",
+      "input": {
+        "t": 2.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@002.750",
+      "input": {
+        "t": 2.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@003.000",
+      "input": {
+        "t": 3.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@003.250",
+      "input": {
+        "t": 3.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@003.500",
+      "input": {
+        "t": 3.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "frame@003.750",
+      "input": {
+        "t": 3.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@000.000",
+      "input": {
+        "t": 0.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@000.250",
+      "input": {
+        "t": 0.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@000.500",
+      "input": {
+        "t": 0.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@000.750",
+      "input": {
+        "t": 0.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@001.000",
+      "input": {
+        "t": 1.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@001.250",
+      "input": {
+        "t": 1.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@001.500",
+      "input": {
+        "t": 1.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@001.750",
+      "input": {
+        "t": 1.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@002.000",
+      "input": {
+        "t": 2.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@002.250",
+      "input": {
+        "t": 2.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@002.500",
+      "input": {
+        "t": 2.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@002.750",
+      "input": {
+        "t": 2.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@003.000",
+      "input": {
+        "t": 3.0
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@003.250",
+      "input": {
+        "t": 3.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@003.500",
+      "input": {
+        "t": 3.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@003.750",
+      "input": {
+        "t": 3.75
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    }
+  ],
+  "rules": {
+    "why": "frames at 4 fps, 32x18 grey, tol 6; audio RMS per 0.25s, tol 1.5 dB; duration tol 0.040s"
+  },
+  "summary": {
+    "cases_compared": 38,
+    "cases_total": 38,
+    "confidence": 0.95,
+    "dimensions": {
+      "audio": {
+        "pass_rate": 1.0,
+        "passed": 16,
+        "total": 16
+      },
+      "frame": {
+        "pass_rate": 1.0,
+        "passed": 16,
+        "total": 16
+      },
+      "meta": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "total": 6
+      }
+    },
+    "failed": 0,
+    "harness_errors": 0,
+    "lower_bound": 0.9241923483170355,
+    "pass_rate": 1.0,
+    "passed": 38
+  }
+}

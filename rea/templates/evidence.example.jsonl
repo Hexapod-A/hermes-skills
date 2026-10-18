@@ -1,0 +1,2 @@
+{"type":"entry","id":"E001","kind":"observed","claim":"empty input returned 400","source":"probe 1, 2026-10-18","artifact":"obs/probe1.json","artifact_sha256":"fill from evidence.py","at":"2026-10-18T00:00:00Z","from":[]}
+{"type":"entry","id":"H001","kind":"hypothesis","claim":"missing input always returns 400","source":"","from":["E001"],"at":"2026-10-18T00:01:00Z"}

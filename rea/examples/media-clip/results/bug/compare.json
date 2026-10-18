@@ -1,0 +1,674 @@
+{
+  "info": {
+    "original": {
+      "acodec": "aac",
+      "channels": 1,
+      "duration": 4.0,
+      "fps": 25.0,
+      "height": 180,
+      "sample_rate": 48000,
+      "vcodec": "h264",
+      "width": 320
+    },
+    "psnr_db": 17.462879,
+    "replica": {
+      "acodec": "aac",
+      "channels": 1,
+      "duration": 4.0,
+      "fps": 25.0,
+      "height": 180,
+      "sample_rate": 48000,
+      "vcodec": "h264",
+      "width": 320
+    },
+    "ssim": 0.775037,
+    "timeline": {
+      "mean_frame_diff_at_shift": 3.23,
+      "meaning": "replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+      "shift_s": -0.25
+    }
+  },
+  "results": [
+    {
+      "diffs": [],
+      "id": "meta.width",
+      "input": {
+        "check": "width"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.height",
+      "input": {
+        "check": "height"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.fps",
+      "input": {
+        "check": "fps"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.sample_rate",
+      "input": {
+        "check": "sample_rate"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.channels",
+      "input": {
+        "check": "channels"
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "meta.duration",
+      "input": {
+        "check": "duration",
+        "tolerance_s": 0.04
+      },
+      "status": "pass",
+      "tags": {
+        "source": "meta"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 8.56
+        }
+      ],
+      "id": "frame@000.000",
+      "input": {
+        "t": 0.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 9.3
+        }
+      ],
+      "id": "frame@000.250",
+      "input": {
+        "t": 0.25
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 9.42
+        }
+      ],
+      "id": "frame@000.500",
+      "input": {
+        "t": 0.5
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 8.09
+        }
+      ],
+      "id": "frame@000.750",
+      "input": {
+        "t": 0.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 8.57
+        }
+      ],
+      "id": "frame@001.000",
+      "input": {
+        "t": 1.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 7.54
+        }
+      ],
+      "id": "frame@001.250",
+      "input": {
+        "t": 1.25
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 8.73
+        }
+      ],
+      "id": "frame@001.500",
+      "input": {
+        "t": 1.5
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 6.9
+        }
+      ],
+      "id": "frame@001.750",
+      "input": {
+        "t": 1.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 9.33
+        }
+      ],
+      "id": "frame@002.000",
+      "input": {
+        "t": 2.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 9.26
+        }
+      ],
+      "id": "frame@002.250",
+      "input": {
+        "t": 2.25
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 10.63
+        }
+      ],
+      "id": "frame@002.500",
+      "input": {
+        "t": 2.5
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 9.72
+        }
+      ],
+      "id": "frame@002.750",
+      "input": {
+        "t": 2.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 11.38
+        }
+      ],
+      "id": "frame@003.000",
+      "input": {
+        "t": 3.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 10.18
+        }
+      ],
+      "id": "frame@003.250",
+      "input": {
+        "t": 3.25
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 11.34
+        }
+      ],
+      "id": "frame@003.500",
+      "input": {
+        "t": 3.5
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "mean abs grey diff, tol 6; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": 0,
+          "path": "frame_mad",
+          "replica": 9.22
+        }
+      ],
+      "id": "frame@003.750",
+      "input": {
+        "t": 3.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "frame"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -18.96,
+          "path": "rms_db",
+          "replica": -21.08
+        }
+      ],
+      "id": "audio@000.000",
+      "input": {
+        "t": 0.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@000.250",
+      "input": {
+        "t": 0.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@000.500",
+      "input": {
+        "t": 0.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -21.08,
+          "path": "rms_db",
+          "replica": -18.96
+        }
+      ],
+      "id": "audio@000.750",
+      "input": {
+        "t": 0.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -18.93,
+          "path": "rms_db",
+          "replica": -21.08
+        }
+      ],
+      "id": "audio@001.000",
+      "input": {
+        "t": 1.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@001.250",
+      "input": {
+        "t": 1.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@001.500",
+      "input": {
+        "t": 1.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -21.08,
+          "path": "rms_db",
+          "replica": -18.94
+        }
+      ],
+      "id": "audio@001.750",
+      "input": {
+        "t": 1.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -18.94,
+          "path": "rms_db",
+          "replica": -21.08
+        }
+      ],
+      "id": "audio@002.000",
+      "input": {
+        "t": 2.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@002.250",
+      "input": {
+        "t": 2.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@002.500",
+      "input": {
+        "t": 2.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -21.08,
+          "path": "rms_db",
+          "replica": -18.94
+        }
+      ],
+      "id": "audio@002.750",
+      "input": {
+        "t": 2.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -18.94,
+          "path": "rms_db",
+          "replica": -21.08
+        }
+      ],
+      "id": "audio@003.000",
+      "input": {
+        "t": 3.0
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@003.250",
+      "input": {
+        "t": 3.25
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [],
+      "id": "audio@003.500",
+      "input": {
+        "t": 3.5
+      },
+      "status": "pass",
+      "tags": {
+        "source": "audio"
+      }
+    },
+    {
+      "diffs": [
+        {
+          "kind": "value",
+          "note": "tol 1.5 dB; timeline: replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+          "original": -21.08,
+          "path": "rms_db",
+          "replica": -18.92
+        }
+      ],
+      "id": "audio@003.750",
+      "input": {
+        "t": 3.75
+      },
+      "status": "fail",
+      "tags": {
+        "source": "audio"
+      }
+    }
+  ],
+  "rules": {
+    "why": "frames at 4 fps, 32x18 grey, tol 6; audio RMS per 0.25s, tol 1.5 dB; duration tol 0.040s"
+  },
+  "summary": {
+    "cases_compared": 38,
+    "cases_total": 38,
+    "confidence": 0.95,
+    "dimensions": {
+      "audio": {
+        "pass_rate": 0.5,
+        "passed": 8,
+        "total": 16
+      },
+      "frame": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "total": 16
+      },
+      "meta": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "total": 6
+      }
+    },
+    "failed": 24,
+    "harness_errors": 0,
+    "lower_bound": 0.23831681964578225,
+    "pass_rate": 0.3684210526315789,
+    "passed": 14
+  }
+}

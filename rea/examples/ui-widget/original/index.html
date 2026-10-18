@@ -1,0 +1,65 @@
+<!doctype html>
+<!-- THE ORIGINAL (treat as a black box page). A small cart widget. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cart - Kampus Books</title>
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: "DejaVu Sans", Arial, sans-serif; background: #f4f1ea; color: #1d1b16; }
+  header { height: 64px; background: #1d1b16; color: #f4f1ea; display: flex; align-items: center; padding: 0 32px; font-weight: 700; letter-spacing: .5px; }
+  main { display: grid; grid-template-columns: 1fr 360px; gap: 24px; max-width: 1040px; margin: 40px auto; padding: 0 24px; }
+  .card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 6px 18px rgba(29,27,22,.08); }
+  h1 { font-size: 22px; margin-bottom: 8px; }
+  .price { color: #6b6455; font-size: 15px; }
+  .stepper { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .stepper button { width: 40px; height: 40px; border-radius: 12px; border: 0; background: #e9e3d6; font-size: 20px; cursor: pointer; }
+  #qty { min-width: 32px; text-align: center; font-size: 18px; font-weight: 700; }
+  .row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 15px; }
+  .total { border-top: 1px solid #e9e3d6; margin-top: 8px; padding-top: 14px; font-weight: 700; font-size: 18px; }
+  #coupon { width: 100%; height: 44px; border: 1px solid #d8d0bf; border-radius: 10px; padding: 0 12px; font-size: 15px; margin-top: 14px; }
+  #msg { min-height: 20px; font-size: 13px; margin-top: 6px; color: #2f6b3a; }
+  #msg.bad { color: #a3312a; }
+  #buy { width: 100%; height: 48px; margin-top: 16px; border: 0; border-radius: 24px; background: #c8502a; color: #fff; font-size: 16px; font-weight: 700; }
+  #buy:disabled { background: #cfc6b4; }
+  @media (max-width: 640px) { main { grid-template-columns: 1fr; margin: 20px auto; padding: 0 16px; } header { padding: 0 16px; } }
+</style></head>
+<body>
+<header>Kampus Books</header>
+<main>
+  <section class="card" id="item">
+    <h1>Physics for WAEC</h1><div class="price">&#8358;2,500.00 each</div>
+    <div class="stepper"><button id="minus" aria-label="less">&minus;</button><span id="qty">1</span><button id="plus" aria-label="more">+</button></div>
+  </section>
+  <aside class="card" id="summary">
+    <div class="row"><span>Subtotal</span><span id="sub"></span></div>
+    <div class="row"><span>Discount</span><span id="disc"></span></div>
+    <div class="row"><span>VAT 7.5%</span><span id="vat"></span></div>
+    <div class="row total"><span>Total</span><span id="total"></span></div>
+    <input id="coupon" placeholder="Coupon code">
+    <div id="msg"></div>
+    <button id="buy">Checkout</button>
+  </aside>
+</main>
+<script>
+  const unit = 250000; let qty = 1, pctOff = 0;
+  const naira = (k) => '\u20a6' + Math.floor(k / 100).toLocaleString('en-US') + '.' + String(k % 100).padStart(2, '0');
+  function draw() {
+    const sub = unit * qty, disc = Math.round(sub * pctOff / 100), vat = Math.round((sub - disc) * 0.075);
+    document.getElementById('qty').textContent = qty;
+    document.getElementById('sub').textContent = naira(sub);
+    document.getElementById('disc').textContent = disc ? '-' + naira(disc) : naira(0);
+    document.getElementById('vat').textContent = naira(vat);
+    document.getElementById('total').textContent = naira(sub - disc + vat);
+    document.getElementById('buy').disabled = qty === 0;
+  }
+  document.getElementById('plus').onclick = () => { if (qty < 9) qty++; draw(); };
+  document.getElementById('minus').onclick = () => { if (qty > 0) qty--; draw(); };
+  document.getElementById('coupon').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const code = e.target.value.trim().toUpperCase(), m = document.getElementById('msg');
+    if (code === 'SAVE10') { pctOff = 10; m.className = ''; m.textContent = 'SAVE10 applied: 10% off'; }
+    else { pctOff = 0; m.className = 'bad'; m.textContent = 'That code does not work'; }
+    draw();
+  });
+  draw();
+</script>
+</body></html>

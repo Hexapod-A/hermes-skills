@@ -1,0 +1,86 @@
+{
+  "clusters": [
+    {
+      "case_ids": [
+        "c00068",
+        "c00235",
+        "c00238",
+        "c00331",
+        "c00335",
+        "c00351",
+        "c00373",
+        "c00389",
+        "c00390",
+        "c00448",
+        "c00484",
+        "c00503",
+        "c00516",
+        "c00546",
+        "c00597",
+        "c00611",
+        "c00615",
+        "c00619",
+        "c00683",
+        "c00702"
+      ],
+      "count": 149,
+      "example_diffs": [
+        {
+          "kind": "value",
+          "original": "₦4,298.93",
+          "path": "body.total_display",
+          "replica": "₦4,298.92"
+        },
+        {
+          "kind": "value",
+          "original": 429893,
+          "path": "body.total_kobo",
+          "replica": 429892
+        },
+        {
+          "kind": "value",
+          "original": 29993,
+          "path": "body.vat_kobo",
+          "replica": 29992
+        }
+      ],
+      "guess": [
+        "off by one unit: rounding mode (half-up vs half-even), floor vs round, or order of operations",
+        "text differs (message wording, format or encoding)"
+      ],
+      "share_of_failures": 1.0,
+      "signature": [
+        "body.total_display (value)",
+        "body.total_kobo (value)",
+        "body.vat_kobo (value)"
+      ],
+      "smallest_id": "c00068",
+      "smallest_input": {
+        "json": {
+          "qty": 2,
+          "sku": "BK-205"
+        },
+        "method": "POST",
+        "path": "/v1/quote"
+      },
+      "tag_lift": [
+        {
+          "in_all": 0.159,
+          "in_cluster": 0.591,
+          "lift": 3.72,
+          "tag": "var.sku=\"BK-101\""
+        },
+        {
+          "in_all": 0.972,
+          "in_cluster": 0.993,
+          "lift": 1.02,
+          "tag": "source=\"random\""
+        }
+      ]
+    }
+  ],
+  "clusters_total": 1,
+  "failures": 149,
+  "harness_error_examples": [],
+  "harness_errors": 0
+}

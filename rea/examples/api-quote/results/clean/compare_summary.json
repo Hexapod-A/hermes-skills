@@ -1,0 +1,27 @@
+{
+  "cases_compared": 4117,
+  "cases_total": 4117,
+  "confidence": 0.95,
+  "dimensions": {
+    "body": {
+      "pass_rate": 1.0,
+      "passed": 4117,
+      "total": 4117
+    },
+    "headers": {
+      "pass_rate": 1.0,
+      "passed": 4117,
+      "total": 4117
+    },
+    "status": {
+      "pass_rate": 1.0,
+      "passed": 4117,
+      "total": 4117
+    }
+  },
+  "failed": 0,
+  "harness_errors": 0,
+  "lower_bound": 0.9992726153469561,
+  "pass_rate": 1.0,
+  "passed": 4117
+}

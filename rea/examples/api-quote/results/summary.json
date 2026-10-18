@@ -1,0 +1,22 @@
+{
+  "clean": {
+    "passed": 4117,
+    "compared": 4117,
+    "pass_rate": 1.0,
+    "lower_bound": 0.9992513473119822,
+    "verdict": "SUBSTANTIATED",
+    "reasons": []
+  },
+  "bug": {
+    "passed": 3968,
+    "compared": 4117,
+    "pass_rate": 0.9638085984940491,
+    "lower_bound": 0.9577079384880602,
+    "verdict": "NOT SUBSTANTIATED",
+    "reasons": [
+      "149 of 4117 cases fail; fix the mismatch before a fidelity claim",
+      "148 of 4000 random cases fail; the zero-failure claim gate is not met"
+    ]
+  },
+  "bug_caught": true
+}

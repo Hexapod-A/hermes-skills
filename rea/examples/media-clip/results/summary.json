@@ -1,0 +1,31 @@
+{
+  "clean": {
+    "passed": 38,
+    "compared": 38,
+    "pass_rate": 1.0,
+    "lower_bound": 0.0,
+    "verdict": "NOT SUBSTANTIATED",
+    "ssim": 0.971188,
+    "psnr_db": 34.986651,
+    "timeline": {
+      "mean_frame_diff_at_shift": 0.63,
+      "meaning": "no shift found",
+      "shift_s": 0.0
+    }
+  },
+  "bug": {
+    "passed": 14,
+    "compared": 38,
+    "pass_rate": 0.3684210526315789,
+    "lower_bound": 0.0,
+    "verdict": "NOT SUBSTANTIATED",
+    "ssim": 0.775037,
+    "psnr_db": 17.462879,
+    "timeline": {
+      "mean_frame_diff_at_shift": 3.23,
+      "meaning": "replica content runs 0.25 s ahead of the original (its cut starts late); resolution 0.25 s, raise --fps for finer",
+      "shift_s": -0.25
+    }
+  },
+  "bug_caught": true
+}

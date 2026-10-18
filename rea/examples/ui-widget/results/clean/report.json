@@ -1,0 +1,30 @@
+{
+  "all_cases_descriptive_lower_bound": 0.8292502770175191,
+  "cases_needed_zero_fail": 2995,
+  "compared": 16,
+  "confidence": 0.95,
+  "evidence": null,
+  "harness_errors": 0,
+  "lower_bound": 0.0,
+  "pass_rate": 1.0,
+  "passed": 16,
+  "random_compared": 0,
+  "random_passed": 0,
+  "reasons": [
+    "no independently generated random cases; hand-picked checks do not support a statistical claim"
+  ],
+  "sources": {
+    "factor": 16
+  },
+  "target": 0.999,
+  "title": "Cart widget replica (clean)",
+  "untested": [
+    "hover and focus states",
+    "other viewports and browser zoom",
+    "fonts other than DejaVu Sans (the box's font)",
+    "animations and transitions",
+    "keyboard-only navigation and screen readers",
+    "Safari and Firefox rendering"
+  ],
+  "verdict": "NOT SUBSTANTIATED"
+}

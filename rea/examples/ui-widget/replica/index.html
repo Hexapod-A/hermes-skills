@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- THE REPLICA. Rebuilt from screenshots, computed styles and interaction traces of the original.
+     Different markup on purpose (flexbox + CSS variables + data attributes); the selector_map in
+     target-replica.json maps the original's selectors to these. ?bug=1 adds a deliberate mismatch:
+     the checkout button radius becomes 8px instead of 24px. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cart - Kampus Books</title>
+<style>
+  :root { --ink: #1d1b16; --paper: #f4f1ea; --line: #e9e3d6; --muted: #6b6455; --accent: #c8502a; --btn-r: 24px; }
+  html.bug { --btn-r: 8px; }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: "DejaVu Sans", Arial, sans-serif; background: var(--paper); color: var(--ink); }
+  .top { height: 64px; background: var(--ink); color: var(--paper); display: flex; align-items: center; padding: 0 32px; font-weight: 700; letter-spacing: .5px; }
+  .wrap { display: flex; gap: 24px; max-width: 1040px; margin: 40px auto; padding: 0 24px; align-items: flex-start; }
+  .panel { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 6px 18px rgba(29,27,22,.08); }
+  .panel.product { flex: 1 1 0; min-width: 0; align-self: stretch; }
+  .panel.sum { flex: 0 0 360px; }
+  .product h2 { font-size: 22px; margin-bottom: 8px; font-weight: 700; }
+  .each { color: var(--muted); font-size: 15px; }
+  .qty-ctl { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .qty-ctl button { width: 40px; height: 40px; border-radius: 12px; border: 0; background: var(--line); font-size: 20px; cursor: pointer; }
+  [data-k="qty"] { min-width: 32px; text-align: center; font-size: 18px; font-weight: 700; }
+  .line { display: flex; justify-content: space-between; padding: 8px 0; font-size: 15px; }
+  .line.grand { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 14px; font-weight: 700; font-size: 18px; }
+  .code { width: 100%; height: 44px; border: 1px solid #d8d0bf; border-radius: 10px; padding: 0 12px; font-size: 15px; margin-top: 14px; }
+  .note { min-height: 20px; font-size: 13px; margin-top: 6px; color: #2f6b3a; }
+  .note.err { color: #a3312a; }
+  .pay { width: 100%; height: 48px; margin-top: 16px; border: 0; border-radius: var(--btn-r); background: var(--accent); color: #fff; font-size: 16px; font-weight: 700; }
+  .pay:disabled { background: #cfc6b4; }
+  @media (max-width: 640px) { .wrap { flex-direction: column; align-items: stretch; margin: 20px auto; padding: 0 16px; } .panel.sum { flex-basis: auto; } .top { padding: 0 16px; } }
+</style></head>
+<body>
+<div class="top">Kampus Books</div>
+<div class="wrap">
+  <div class="panel product">
+    <h2>Physics for WAEC</h2><p class="each">&#8358;2,500.00 each</p>
+    <div class="qty-ctl"><button data-act="dec" aria-label="less">&minus;</button><span data-k="qty">1</span><button data-act="inc" aria-label="more">+</button></div>
+  </div>
+  <div class="panel sum">
+    <div class="line"><span>Subtotal</span><span data-k="sub"></span></div>
+    <div class="line"><span>Discount</span><span data-k="disc"></span></div>
+    <div class="line"><span>VAT 7.5%</span><span data-k="vat"></span></div>
+    <div class="line grand"><span>Total</span><span data-k="total"></span></div>
+    <input class="code" placeholder="Coupon code">
+    <div class="note"></div>
+    <button class="pay">Checkout</button>
+  </div>
+</div>
+<script>
+  if (new URLSearchParams(location.search).get('bug') === '1') document.documentElement.classList.add('bug');
+  const S = { qty: 1, off: 0 }, UNIT = 250000, $ = (k) => document.querySelector(`[data-k="${k}"]`);
+  const fmt = (k) => '\u20a6' + Math.floor(k / 100).toLocaleString('en-US') + '.' + String(k % 100).padStart(2, '0');
+  function render() {
+    const sub = UNIT * S.qty, disc = Math.round(sub * S.off / 100), vat = Math.round((sub - disc) * 0.075);
+    $('qty').textContent = S.qty; $('sub').textContent = fmt(sub);
+    $('disc').textContent = disc ? '-' + fmt(disc) : fmt(0);
+    $('vat').textContent = fmt(vat); $('total').textContent = fmt(sub - disc + vat);
+    document.querySelector('.pay').disabled = S.qty === 0;
+  }
+  document.querySelector('[data-act="inc"]').addEventListener('click', () => { S.qty = Math.min(9, S.qty + 1); render(); });
+  document.querySelector('[data-act="dec"]').addEventListener('click', () => { S.qty = Math.max(0, S.qty - 1); render(); });
+  document.querySelector('.code').addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const ok = e.target.value.trim().toUpperCase() === 'SAVE10', n = document.querySelector('.note');
+    S.off = ok ? 10 : 0; n.className = ok ? 'note' : 'note err';
+    n.textContent = ok ? 'SAVE10 applied: 10% off' : 'That code does not work';
+    render();
+  });
+  render();
+</script>
+</body></html>

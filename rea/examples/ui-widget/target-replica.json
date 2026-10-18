@@ -1,0 +1,21 @@
+{
+  "kind": "ui",
+  "name": "replica",
+  "base_url": "replica/",
+  "selector_map": {
+    "#qty": "[data-k=\"qty\"]",
+    "#sub": "[data-k=\"sub\"]",
+    "#disc": "[data-k=\"disc\"]",
+    "#vat": "[data-k=\"vat\"]",
+    "#total": "[data-k=\"total\"]",
+    "#plus": "[data-act=\"inc\"]",
+    "#minus": "[data-act=\"dec\"]",
+    "#coupon": ".code",
+    "#msg": ".note",
+    "#buy": ".pay",
+    "#item": ".panel.product",
+    "#summary": ".panel.sum",
+    "header": ".top",
+    "h1": ".product h2"
+  }
+}

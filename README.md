@@ -12,6 +12,7 @@ Skills for John's self-hosted [Hermes Agent](https://github.com/nousresearch/her
 | **outreach-and-proposals** | Cold email/DM/follow-up drafts for John to send, priced proposals and SOWs as branded PDFs, 3xAgentic pricing guide. |
 | **video-clipper** | yt-dlp download, frame-accurate ffmpeg cuts, 9:16 reframe (crop or blur), faster-whisper word-timed captions burned in. |
 | **docs-and-pdfs** | Markdown/HTML notes to branded PDF (cover, page numbers) and DOCX, with checks. |
+| **rea** | Standalone Reverse Engineer Anything skill: observe, specify, experiment, rebuild and differential-test websites, APIs, mobile apps, binaries, media and public workflows. Evidence log, case generator, multi-target runner, comparison, triage and fidelity report. Claims 99.9% only for a defined tested distribution when the evidence supports it. |
 | **ui-replicate** | Rebuilds a UI in code from a Dribbble/Behance shot, a screenshot or a live URL, then proves the match: full-res reference download, computed-style extraction (fonts, type scale, colours, radii, shadows, spacing), palette and px-grid measuring, self-hosted fonts, screenshots at the reference's exact size, side-by-side sheet, SSIM/layout/colour diff score with the worst regions, and a 390px phone check. |
 | **profile/USER.md** | John's preferences in Hermes' memory format. |
 
@@ -40,11 +41,11 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt in
 git clone git@github.com:Hexapod-A/hermes-skills.git ~/.hermes/skills/hermes-skills
 cd ~/.hermes/skills/hermes-skills
 
-# 3. Node deps + headless Chromium (flyer-studio, docs-and-pdfs, ui-replicate)
+# 3. Node deps + headless Chromium (flyer-studio, docs-and-pdfs, ui-replicate, rea UI probe)
 npm install
 npx playwright install --with-deps chromium
 
-# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, ui-replicate)
+# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, ui-replicate, rea UI pixel checks)
 python3 -m venv .venv
 .venv/bin/pip install -U pip
 .venv/bin/pip install -r requirements.txt
@@ -60,7 +61,7 @@ cat profile/USER.md >> ~/.hermes/memories/USER.md
 #      env_passthrough: [SEARXNG_URL, BRAVE_API_KEY, SERPER_API_KEY, TAVILY_API_KEY, OSM_USER_AGENT, HF_TOKEN]
 
 # 7. restart Hermes (new session) and check the skills are listed
-hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate"
+hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate|rea"
 ```
 
 Using a named Hermes profile? Clone into `~/.hermes/profiles/<name>/skills/hermes-skills` instead, and use that profile's `memories/` folder. Prefer keeping the repo elsewhere? Clone to `~/hermes-skills` and add it under `skills.external_dirs` in `config.yaml`.

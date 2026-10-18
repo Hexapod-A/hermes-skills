@@ -1,0 +1,32 @@
+{
+  "all_cases_descriptive_lower_bound": 0.734117221320116,
+  "cases_needed_zero_fail": 2995,
+  "compared": 3029,
+  "confidence": 0.95,
+  "evidence": null,
+  "harness_errors": 0,
+  "lower_bound": 0.734280292802058,
+  "pass_rate": 0.7474413998019148,
+  "passed": 2264,
+  "random_compared": 3000,
+  "random_passed": 2243,
+  "reasons": [
+    "765 of 3029 cases fail; fix the mismatch before a fidelity claim",
+    "757 of 3000 random cases fail; the zero-failure claim gate is not met"
+  ],
+  "sources": {
+    "boundary": 5,
+    "factor": 16,
+    "fixed": 8,
+    "random": 3000
+  },
+  "target": 0.999,
+  "title": "kcode replica (bug)",
+  "untested": [
+    "inputs over 1 MiB (the original reads at most 1 MiB; behaviour past it not probed)",
+    "stdin closed early / pipes that fail",
+    "locale or terminal settings",
+    "decode outputs over 1 MiB"
+  ],
+  "verdict": "NOT SUBSTANTIATED"
+}
