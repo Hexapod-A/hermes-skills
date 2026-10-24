@@ -14,6 +14,7 @@ Skills for John's self-hosted [Hermes Agent](https://github.com/nousresearch/her
 | **docs-and-pdfs** | Markdown/HTML notes to branded PDF (cover, page numbers) and DOCX, with checks. |
 | **rea** | Standalone Reverse Engineer Anything skill: observe, specify, experiment, rebuild and differential-test websites, APIs, mobile apps, binaries, media and public workflows. Evidence log, case generator, multi-target runner, comparison, triage and fidelity report. Claims 99.9% only for a defined tested distribution when the evidence supports it. |
 | **ui-replicate** | Rebuilds a UI in code from a Dribbble/Behance shot, a screenshot or a live URL, then proves the match: full-res reference download, computed-style extraction (fonts, type scale, colours, radii, shadows, spacing), palette and px-grid measuring, self-hosted fonts, screenshots at the reference's exact size, side-by-side sheet, SSIM/layout/colour diff score with the worst regions, and a 390px phone check. |
+| **sabri-sales** | Sabri Suby's selling system, done honestly for 3x Agentic: buyer research, Godfather offer with John's three guarantees (50/50 milestone pay, audit fee credited, 6 months of fixes and upkeep), real scarcity (10 audits a week), and separate modules for outbound (cold email, cold DMs, follow-ups), content (TikTok/Reels scripts, X posts/threads, LinkedIn) and conversion (landing page, VSL, audit call). Built from transcripts of his long YouTube videos. Every draft is linted for banned words, unapproved numbers, prices and the wordmark. Drafts only. |
 | **profile/USER.md** | John's preferences in Hermes' memory format. |
 
 Sample flyers: `flyer-studio/examples/out/`. Sample proposal: `outreach-and-proposals/examples/proposal-example.pdf`.
@@ -61,7 +62,7 @@ cat profile/USER.md >> ~/.hermes/memories/USER.md
 #      env_passthrough: [SEARXNG_URL, BRAVE_API_KEY, SERPER_API_KEY, TAVILY_API_KEY, OSM_USER_AGENT, HF_TOKEN]
 
 # 7. restart Hermes (new session) and check the skills are listed
-hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate|rea"
+hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate|rea|sabri-sales"
 ```
 
 Using a named Hermes profile? Clone into `~/.hermes/profiles/<name>/skills/hermes-skills` instead, and use that profile's `memories/` folder. Prefer keeping the repo elsewhere? Clone to `~/hermes-skills` and add it under `skills.external_dirs` in `config.yaml`.
@@ -82,6 +83,7 @@ node docs-and-pdfs/scripts/build.mjs outreach-and-proposals/examples/proposal-ex
 .venv/bin/python video-clipper/scripts/clip.py make --url "https://www.youtube.com/watch?v=jNQXAC9IVRw" --end 15 --captions --model tiny --out /tmp/short.mp4   # video-clipper
 node docs-and-pdfs/scripts/build.mjs docs-and-pdfs/examples/notes-example.md --out /tmp/notes.pdf   # docs-and-pdfs
 .venv/bin/python ui-replicate/tests/test_scripts.py && node ui-replicate/scripts/screenshot.mjs https://example.com --out /tmp/uir --widths 1440,390   # ui-replicate: 11 PASS + 2 PNGs
+python3 sabri-sales/tests/test_lint.py                                    # sabri-sales: ALL PASS
 ```
 
 Then in Hermes: `/flyer-studio make a square + story flyer for 3xAgentic: "Your Front Desk Never Sleeps"`, or `/ui-replicate rebuild this Dribbble shot in Next.js + Tailwind: <link>`.
