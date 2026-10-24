@@ -1,0 +1,110 @@
+{
+  "name": "3x Agentic",
+  "website": "3xagentic.xyz",
+  "what_we_do": "We build AI automations for small and mid-size businesses: tools that do the repeated, manual work so the team can do the work that needs a person.",
+  "market": "US and other USD-paying businesses. Plain words for non-technical owners.",
+  "cta": "Book a free automation audit",
+  "cta_link": "3xagentic.xyz",
+  "proof": [
+    "3+ years building automations",
+    "23+ systems built",
+    "450+ hours saved for clients",
+    "clients in 12 industries"
+  ],
+  "capacity": "We do up to 10 automation audits a week, because a builder does each one, not a salesperson.",
+  "guarantees": {
+    "milestone_pay": "You pay 50% to start. You pay the other 50% only after you see the system working in your business.",
+    "audit_credit": "If you go ahead with the build, we take the audit fee off the build price.",
+    "care_cover": "6 months of fixes and upkeep after launch. If something we built breaks, we fix it. Fixes and upkeep, not new features."
+  },
+  "allowed_number_patterns": [
+    "\\b3\\+\\s*years?",
+    "\\b23\\+\\s*(?:automation\\s+|working\\s+|live\\s+)?(?:systems?|automations?)",
+    "\\b450\\+\\s*hours?",
+    "\\b12\\s+(?:different\\s+)?industries",
+    "\\b10\\s+(?:free\\s+)?(?:automation\\s+)?audits?",
+    "\\b50\\s*%",
+    "\\b50/50\\b",
+    "\\b6[\\s-]+months?",
+    "\\b6-month",
+    "(?m)^\\s*\\d{1,2}/(?=\\s)",
+    "(?m)^\\s*\\d{1,2}/\\d{1,2}(?=\\s)"
+  ],
+  "strip_before_number_scan": [
+    "3x Agentic",
+    "3xagentic.xyz",
+    "3xagentic"
+  ],
+  "banned_phrases": [
+    "hustle",
+    "hustling",
+    "grind",
+    "grinding",
+    "passive income",
+    "financial freedom",
+    "game-changer",
+    "game changer",
+    "automation mastery",
+    "gemini",
+    "blockchain",
+    "crypto",
+    "cryptocurrency",
+    "web3",
+    "nft",
+    "bitcoin",
+    "usdt",
+    "free build",
+    "money-back",
+    "money back",
+    "refund"
+  ],
+  "fake_urgency": [
+    "act now",
+    "limited time",
+    "last chance",
+    "hurry",
+    "only today",
+    "today only",
+    "spots are filling",
+    "filling fast",
+    "before it's too late",
+    "expires tonight",
+    "don't miss out",
+    "ends soon",
+    "selling out"
+  ],
+  "wordmark_wrong": [
+    "3xAgentic",
+    "3X Agentic",
+    "3x agentic",
+    "3X agentic",
+    "3x-Agentic",
+    "3xagentic agency"
+  ],
+  "warn_words": {
+    "utilize": "use",
+    "leverage": "use",
+    "synergy": "(say what you mean)",
+    "seamless": "(say what it does)",
+    "cutting-edge": "(cut it)",
+    "revolutionary": "(cut it)",
+    "unlock": "get / open",
+    "skyrocket": "grow",
+    "supercharge": "(cut it)",
+    "disgustingly": "(cut it)",
+    "insane": "(cut it)",
+    "crush": "(cut it)",
+    "effortless": "(say what it does)",
+    "in order to": "to",
+    "a lot of": "many / much",
+    "secret": "(only if it is true)",
+    "guaranteed results": "(we promise fixes, not results)"
+  },
+  "max_words_per_sentence": 20,
+  "never_say": [
+    "prices or price ranges (pricing lives in outreach-and-proposals, and only John sets it)",
+    "client names, logos, testimonials or case studies that John has not given you",
+    "any number that is not in this file",
+    "that the audit is longer or shorter than John says (length not set yet: say 'a short call')"
+  ]
+}
