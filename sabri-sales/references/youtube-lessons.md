@@ -1,6 +1,6 @@
 # What Sabri's long YouTube videos teach (index)
 
-Transcripts of 22 long videos from his channel (@SabriSubyOfficial), read on Oct 24, 2026. Ordered by views (Oct 18 list).
+Transcripts of 23 long videos from his channel (@SabriSubyOfficial), read on Oct 24, 2026. Ordered by views (Oct 18 list).
 Each line: the video, its views, and the core idea. The full notes (frameworks, quotes with timestamps, how it applies to 3x Agentic, what not to copy) are in `youtube-notes/`.
 His numbers in these notes are his own claims. Never reuse them in 3x Agentic copy.
 
@@ -73,6 +73,11 @@ HexClad sells a $100+ frying pan in a market full of $5 commodity pans by refusi
 https://www.youtube.com/watch?v=46Z7e4Ycgj4 · 38,000 views · 22:19 · notes: `youtube-notes/4-low-competition-ai-businesses-to-start-today.md`
 
 Sabri Suby argues the winning AI businesses in 2026 aren't "AI businesses" per se — they're old, proven business models (ad creative, local service, ecom, affiliate content) where AI strips out cost, time, and team bloat while a human still owns strategy, taste, and offer. The edge isn't the tool, it's picking a proven, already-in-demand niche/offer and using AI to execute it faster and cheaper than competitors can.
+
+## How To Grow 10X FASTER Than Anyone In Your Industry
+https://www.youtube.com/watch?v=YVDtJNu7b48 · 36,000 views · 17:25 · notes: `youtube-notes/how-to-grow-10x-faster-than-anyone-in-your-industry.md`
+
+Sabri Suby dissects the gray-market peptide industry's growth to extract five transferable marketing tactics. The core lesson: businesses can grow faster by removing distribution middlemen, weaponizing scarcity and disclaimers, engineering viral word-of-mouth offers, and leading with the most urgent "painkiller" version of their solution instead of the full package.
 
 ## If You Don't Understand Funnels, You Don't Understand Marketing (listed earlier as "I Ranked the Best Client Getting Funnels (2026)")
 https://www.youtube.com/watch?v=zHeRryZ8X50 · 35,000 views · 23:01 · notes: `youtube-notes/if-you-don-t-understand-funnels-you-don-t-understand-marketi.md`
