@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Starter page</title>
+  <meta name="description" content="A responsive starter page built on base.css.">
+  <link rel="stylesheet" href="base.css">
+  <style>
+    .site-header { position: sticky; top: 0; z-index: 10; background: rgb(255 255 255 / 0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--color-border); }
+    .site-header .container { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: var(--space-4); }
+    .logo { display: inline-flex; align-items: center; min-height: 44px; font-weight: 800; font-size: var(--text-lg); text-decoration: none; }
+    .nav { display: none; gap: var(--space-5); }
+    .nav a { text-decoration: none; color: var(--color-muted); }
+    .hero { display: grid; gap: var(--space-6); align-items: center; }
+    .hero h1 { font-size: var(--text-3xl); }
+    .hero .lead { font-size: var(--text-lg); color: var(--color-muted); }
+    .hero-media { aspect-ratio: 4 / 3; border-radius: var(--radius-lg); background: linear-gradient(135deg, #ffe2c4, #ffd0a1); }
+    .stat { font-size: var(--text-2xl); font-weight: 800; }
+    footer { border-top: 1px solid var(--color-border); padding-block: var(--space-6); font-size: var(--text-sm); }
+    footer a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: var(--space-2); }
+    @media (min-width: 768px) { .nav { display: flex; } }
+    @media (min-width: 1024px) { .hero { grid-template-columns: 1.1fr 0.9fr; } }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="#">Brand</a>
+      <nav class="nav" aria-label="Main"><a href="#features">Features</a><a href="#proof">Results</a><a href="#contact">Contact</a></nav>
+      <a class="btn btn-primary" href="#contact">Get started</a>
+    </div>
+  </header>
+  <main>
+    <section class="section">
+      <div class="container hero">
+        <div class="stack" style="--stack: var(--space-5)">
+          <p class="eyebrow">For small businesses</p>
+          <h1>Do the work once. Let it run every day.</h1>
+          <p class="lead">A clear one-sentence promise that says who it is for and what changes for them.</p>
+          <div class="cluster"><a class="btn btn-primary" href="#contact">Book a call</a><a class="btn btn-ghost" href="#features">See how it works</a></div>
+        </div>
+        <div class="hero-media" role="img" aria-label="Product preview"></div>
+      </div>
+    </section>
+    <section class="section" id="features" style="background: var(--color-surface)">
+      <div class="container stack" style="--stack: var(--space-6)">
+        <h2 style="font-size: var(--text-2xl)">Three things it does well</h2>
+        <div class="grid">
+          <article class="card stack"><h3>Fast setup</h3><p class="muted">Short, concrete benefit in one or two lines.</p></article>
+          <article class="card stack"><h3>Runs by itself</h3><p class="muted">Short, concrete benefit in one or two lines.</p></article>
+          <article class="card stack"><h3>Clear reports</h3><p class="muted">Short, concrete benefit in one or two lines.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="proof">
+      <div class="container grid" style="--min: 180px">
+        <div><p class="stat">00+</p><p class="muted">real number 1</p></div>
+        <div><p class="stat">00</p><p class="muted">real number 2</p></div>
+        <div><p class="stat">00</p><p class="muted">real number 3</p></div>
+      </div>
+    </section>
+    <section class="section" id="contact" style="background: var(--color-surface)">
+      <div class="container stack" style="max-width: 560px">
+        <h2 style="font-size: var(--text-2xl)">Talk to us</h2>
+        <form class="stack" onsubmit="event.preventDefault(); this.querySelector('output').textContent = 'Thanks, we will reply soon.'">
+          <label for="email">Email</label>
+          <input id="email" type="email" required autocomplete="email" style="width:100%;min-height:44px;padding:0 12px;border:1px solid var(--color-border);border-radius:var(--radius-sm)">
+          <button class="btn btn-primary" type="submit">Send</button>
+          <output aria-live="polite"></output>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container cluster" style="justify-content: space-between"><span>© Brand</span><a href="#">Privacy</a></div></footer>
+</body>
+</html>
