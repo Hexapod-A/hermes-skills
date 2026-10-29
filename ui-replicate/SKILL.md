@@ -1,7 +1,7 @@
 ---
 name: ui-replicate
 description: Rebuild a UI from an image or URL and prove the match.
-version: 1.0.0
+version: 1.1.0
 author: John (Hexapod-A), 3xAgentic
 license: MIT
 platforms: [linux, macos]
@@ -9,7 +9,7 @@ metadata:
   hermes:
     tags: [design, ui, frontend, tailwind, nextjs, playwright, dribbble, pixel-match, responsive]
     category: creative
-    related_skills: [flyer-studio, web-research]
+    related_skills: [frontend-build, software-engineering-qa, web-unblock, flyer-studio, web-research]
 ---
 
 # UI Replicate Skill
@@ -17,6 +17,8 @@ metadata:
 Turns a design reference into working front-end code that looks the same: a Dribbble/Behance shot, a screenshot, or a live website. The method is measure first, build tokens and components, then prove the match with a headless-browser screenshot at the reference's exact size, a side-by-side sheet and a diff score. It loops until the score passes and then says plainly what still differs.
 
 Built from the pow-platform job (Oct 2026): two Dribbble shots and two Webflow sites rebuilt in Next.js + Tailwind. See `references/case-pow-platform.md` for what happened and the real scores.
+
+Version 1.1 adds **exact mode** for "copy it exactly as it is": `compare_styles.mjs` pairs elements of the live reference and the build by their text and lists every font, size, weight, spacing, colour and radius that differs; `verify_widths.sh` runs the pixel diff at 1440/768/390 in one call; `references/exact-match.md` is the checklist for the details a score misses (states, motion, icons, assets).
 
 ## When to Use
 
@@ -64,6 +66,8 @@ Not for: logos, illustrations or AI-generated mockups. Do not ship another desig
 | `diff_score.py REF BUILD` | `ssim` (detail), `layout` (block positions), `colour` (100 − mean ΔE), `pixels_differ`, worst tiles with px boxes, global offset finder, heatmap. `--preset restyle|clone`. |
 | `side_by_side.py REF BUILD --out S` | Labelled sheet, optional heatmap panel and `--blend` overlay. |
 | `verify.sh REF URL OUT` | screenshot at the ref's size → diff_score → side_by_side, in one call. |
+| `compare_styles.mjs REF_URL BUILD_URL` | Live reference vs build, element by element (paired by visible text): font family, size, weight, line height, letter spacing, text transform, colour and background (ΔE), radius, padding, box size, `--pos` for position. Groups repeats into "most common fixes" (one token change fixes many). Lists text missing from the build. `--widths 1440,390`. Exit 0 at ≥ 95%. |
+| `verify_widths.sh REF_URL BUILD_URL OUT` | Screenshots both URLs at each width (`--widths 1440,768,390`, first screen or `--full`), diff_score + sheet per width, then `compare_styles.mjs`. One table, exit 0 only when every width passes. |
 
 Score guide (from the pow-platform run, 1440×1013): the accepted dashboard restyle scored ssim 0.75 / layout 0.85 / colour 95.0. A different screen (our peer page) against the dashboard reference scored 0.68 / 0.53 / 86.1. `restyle` passes at 0.72 / 0.84 / 92, `clone` at 0.90 / 0.95 / 97. With your own content in place of the reference's, ssim stays low even when the layout matches (0.75 on that dashboard), so do not chase ssim on a restyle; chase layout and colour.
 
@@ -77,7 +81,11 @@ Score guide (from the pow-platform run, 1440×1013): the accepted dashboard rest
 3. **Build tokens first.** Colours, fonts, radii, shadows and spacing go into `templates/tokens.css` / `templates/tailwind.tokens.ts` (or the project's own config) before any component. Self-host fonts with `google_font.py`. Then build components from the list, then pages. Use real content from the job (real course names, prices in the right currency, real names), never lorem ipsum. Use real photos for people (licensed stock or randomuser.me in demos), not cartoon or silhouette placeholders, unless the user asks for the reference's illustration style.
 4. **Verify loop.** Run `verify.sh` with the reference and the page URL. Read the numbers, then look at the sheet and the heatmap with `vision_analyze`. Fix in this order: global offset note (outer margins, header height, wrong crop) → worst tiles (layout and size) → colours flagged OFF by `palette.py --compare` → type (size, weight, line height) → radius/shadow/icon details. Re-run after each round. Stop when it passes and the sheet looks the same to the eye; a passing score with an obvious visual miss is not done.
 5. **Responsive.** Follow `references/responsive.md`: same tokens, same components, reflow the grid, keep the signature details. Check 390px with `screenshot.mjs --widths 390` and look for `horizontal_overflow: true`.
-6. **Report honestly.** Give the user the side-by-side sheet, the scores, and a short list of what still differs and why (content swapped on purpose, photos instead of 3D avatars, an icon not in the free set). Never call it "exact" or "100%" unless `--preset clone` passes.
+6. **Exact mode** (the user says "exactly", "the same", "1:1", or the reference is a live site you are cloning). Do steps 1-5 with `--preset clone`, then:
+   - Live reference: run `verify_widths.sh REF_URL BUILD_URL OUT --widths 1440,768,390 --clean`. Fix the "most common fixes" from `styles/style-diff.md` first (they are usually one wrong token), then single items, then the worst tiles per width. Repeat until every width passes and the style match is ≥ 95%.
+   - Image reference: `verify.sh --preset clone`, then zoom: crop the same small region (a button, a card header, an icon row) from reference and build with `grid_overlay.py --crop ... --zoom 3` and compare them with `vision_analyze`. Measure, don't guess: `palette.py --at` for every colour, `grid_overlay.py` for every gap.
+   - Go through `references/exact-match.md`: hover/focus/active states, transitions and their timing, sticky and scroll behaviour, icon stroke width, borders (1px vs 0.5px), shadows, image crops, favicon and title.
+7. **Report honestly.** Give the user the side-by-side sheet, the scores, and a short list of what still differs and why (content swapped on purpose, photos instead of 3D avatars, an icon not in the free set). Never call it "exact" or "100%" unless `--preset clone` passes.
 
 ## Pitfalls
 
@@ -90,11 +98,13 @@ Score guide (from the pow-platform run, 1440×1013): the accepted dashboard rest
 - **Placeholder people look cheap.** Cartoon avatars and grey silhouettes read as unfinished. Real photos; cut out the background only when the reference uses cut-outs.
 - **Two fonts in two references.** If two reference screens use different fonts, match each screen and say so, or ask which one wins.
 - **Mock data drifts.** Demo data that changes on clicks makes screenshots differ between runs. Freeze the seed or log in as a fixed demo user before verifying.
+- **Paired by text.** `compare_styles.mjs` matches elements by their words. Where the build uses different copy on purpose (restyle), pairing drops; use it for clones, and read the "missing in build" list as a to-do only when the copy should be the same.
 - **Do not copy assets.** Recreate icons from a free set (Iconsax, Lucide, Phosphor) and draw shapes in CSS/SVG. Paid fonts found by `extract_styles.mjs --fonts` are for identification only.
 
 ## Verification
 
 - `python3 ${HERMES_SKILL_DIR}/tests/test_scripts.py` prints 11 PASS lines and `all passed` (offline, synthetic images).
 - `node ${HERMES_SKILL_DIR}/scripts/screenshot.mjs https://example.com --out /tmp/uir --widths 1440,390` writes two PNGs and prints `"horizontal_overflow":false`.
+- `python3 ${HERMES_SKILL_DIR}/tests/test_compare.py` serves a reference page and a build with known differences and checks `compare_styles.mjs` finds the size, weight, letter-spacing, colour, radius and missing-text differences, and that `verify_widths.sh` passes a page against itself and fails the build. It prints 12 PASS lines and `all passed`.
 - Full loop on a real page: see the example in `examples/pow-dashboard/README.md`.
-- Files: `templates/spec-template.md` (the analysis spec), `templates/tokens.css` and `templates/tailwind.tokens.ts` (token starters), `references/fonts.md` (font matching), `references/responsive.md` (desktop to 390px), `references/case-pow-platform.md` (the real job and its scores).
+- Files: `references/exact-match.md` (exact-copy checklist), `templates/spec-template.md` (the analysis spec), `templates/tokens.css` and `templates/tailwind.tokens.ts` (token starters), `references/fonts.md` (font matching), `references/responsive.md` (desktop to 390px), `references/case-pow-platform.md` (the real job and its scores).
