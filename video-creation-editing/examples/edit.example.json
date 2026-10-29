@@ -1,0 +1,83 @@
+{
+  "size": "1080x1920",
+  "fps": 30,
+  "crf": 20,
+  "font": "/path/to/YourBrand-Bold.ttf",
+  "transition": {
+    "type": "cut"
+  },
+  "grade": {
+    "eq": "contrast=1.06:saturation=1.1"
+  },
+  "clips": [
+    {
+      "src": "clips/typing.mp4",
+      "in": 2.4,
+      "out": 3.4,
+      "text": {
+        "t": "Still doing this\nby hand?",
+        "pos": "top",
+        "size": 84
+      }
+    },
+    {
+      "src": "clips/inbox.mp4",
+      "in": 0.0,
+      "out": 0.8
+    },
+    {
+      "src": "clips/team.mp4",
+      "in": 5.0,
+      "ramp": [
+        [
+          0.6,
+          1.0
+        ],
+        [
+          1.2,
+          3.0
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "src": "photos/dashboard.png",
+      "dur": 1.5,
+      "kenburns": "in",
+      "fit": "crop"
+    },
+    {
+      "src": "clips/handshake.mp4",
+      "in": 1.0,
+      "out": 2.2,
+      "transition": {
+        "type": "fade",
+        "dur": 0.25
+      }
+    },
+    {
+      "color": "#0d0d0d",
+      "dur": 2.2,
+      "text": {
+        "t": "Book a free audit\nexample.com",
+        "size": 88
+      }
+    }
+  ],
+  "music": {
+    "src": "audio/bed.mp3",
+    "volume": 0.35,
+    "duck": true,
+    "fade_out": 1.2
+  },
+  "voiceover": {
+    "src": "audio/vo.wav",
+    "at": 0.2
+  },
+  "captions": "audio/vo.srt",
+  "loudness": -14,
+  "out": "final.mp4"
+}
