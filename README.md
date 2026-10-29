@@ -13,7 +13,11 @@ Skills for John's self-hosted [Hermes Agent](https://github.com/nousresearch/her
 | **video-clipper** | yt-dlp download, frame-accurate ffmpeg cuts, 9:16 reframe (crop or blur), faster-whisper word-timed captions burned in. |
 | **docs-and-pdfs** | Markdown/HTML notes to branded PDF (cover, page numbers) and DOCX, with checks. |
 | **rea** | Standalone Reverse Engineer Anything skill: observe, specify, experiment, rebuild and differential-test websites, APIs, mobile apps, binaries, media and public workflows. Evidence log, case generator, multi-target runner, comparison, triage and fidelity report. Claims 99.9% only for a defined tested distribution when the evidence supports it. |
-| **ui-replicate** | Rebuilds a UI in code from a Dribbble/Behance shot, a screenshot or a live URL, then proves the match: full-res reference download, computed-style extraction (fonts, type scale, colours, radii, shadows, spacing), palette and px-grid measuring, self-hosted fonts, screenshots at the reference's exact size, side-by-side sheet, SSIM/layout/colour diff score with the worst regions, and a 390px phone check. |
+| **ui-replicate** | Rebuilds a UI in code from a Dribbble/Behance shot, a screenshot or a live URL, then proves the match: full-res reference download, computed-style extraction (fonts, type scale, colours, radii, shadows, spacing), palette and px-grid measuring, self-hosted fonts, screenshots at the reference's exact size, side-by-side sheet, SSIM/layout/colour diff score with the worst regions, and a 390px phone check. v1.1 adds exact mode for live-site clones: element-by-element computed-style diff (`compare_styles.mjs`), pixel diff at 1440/768/390 in one call (`verify_widths.sh`), and an exact-match checklist (states, motion, icons, borders). |
+| **persistent-problem-solving** | The working method for every task: find the real goal, do the work instead of redirecting the user, ask at most one blocking question, route around blockers (3+ real routes before "can't"), verify the result yourself, never fake results, short honest updates and reports. Route list for blocked pages, media, missing tools, failing builds, refusing APIs. |
+| **software-engineering-qa** | Code health and security plus real-browser testing: `repo_scan.py` (lint, types, tests, build, npm/pip audit, gitleaks), `suspicious_scan.py` (leaked keys, malicious install scripts, obfuscated code, exfil webhooks, VS Code auto-run tasks, code hidden in font/image files), `ui_check.mjs` (Chromium at 320/375/414/768/1440: console/JS errors, failed requests, sideways scroll with the element causing it, broken images, alt/labels/contrast/tap targets, dead links, screenshots). Code-review and deploy checklists. |
+| **frontend-build** | Production front ends (Next.js + Tailwind or plain HTML/CSS): tokens first, mobile first, every component state, images/fonts done right, then two gates: `ui_check.mjs` (0 errors at 5 widths) and `web_vitals.mjs` (LCP, CLS, TBT, JS size, oversized/unsized images, render-blocking files on a phone profile). Ships `base.css` tokens + a starter page that passes both. |
+| **video-creation-editing** | Short videos from a brief, a reference or raw clips: `scene_cuts.py` reads a reference edit (cut times, cuts per second, one frame per shot), `assemble.py` builds from a JSON edit list (cuts, speed ramps, Ken Burns, title cards, text overlays, xfade transitions, LUT/eq grade, voice-over, music ducking, burned captions, -14 LUFS), `vcheck.py` checks the file (size, codecs, loudness, silence, black/frozen frames, contact sheet), `export_size.py` fits WhatsApp's 16 MB. ffmpeg recipe book + editing guide. |
 | **sabri-sales** | Sabri Suby's selling system, done honestly for 3x Agentic: buyer research, Godfather offer with John's three guarantees (50/50 milestone pay, audit fee credited, 6 months of fixes and upkeep), real scarcity (10 audits a week), and separate modules for outbound (cold email, cold DMs, follow-ups), content (TikTok/Reels scripts, X posts/threads, LinkedIn) and conversion (landing page, VSL, audit call). Built from transcripts of his long YouTube videos. Every draft is linted for banned words, unapproved numbers, prices and the wordmark. Drafts only. |
 | **profile/USER.md** | John's preferences in Hermes' memory format. |
 
@@ -42,11 +46,11 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt in
 git clone git@github.com:Hexapod-A/hermes-skills.git ~/.hermes/skills/hermes-skills
 cd ~/.hermes/skills/hermes-skills
 
-# 3. Node deps + headless Chromium (flyer-studio, docs-and-pdfs, ui-replicate, rea UI probe)
+# 3. Node deps + headless Chromium (flyer-studio, docs-and-pdfs, ui-replicate, rea UI probe, software-engineering-qa, frontend-build)
 npm install
 npx playwright install --with-deps chromium
 
-# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, ui-replicate, rea UI pixel checks)
+# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, video-creation-editing, ui-replicate, rea UI pixel checks)
 python3 -m venv .venv
 .venv/bin/pip install -U pip
 .venv/bin/pip install -r requirements.txt
@@ -84,6 +88,11 @@ node docs-and-pdfs/scripts/build.mjs outreach-and-proposals/examples/proposal-ex
 node docs-and-pdfs/scripts/build.mjs docs-and-pdfs/examples/notes-example.md --out /tmp/notes.pdf   # docs-and-pdfs
 .venv/bin/python ui-replicate/tests/test_scripts.py && node ui-replicate/scripts/screenshot.mjs https://example.com --out /tmp/uir --widths 1440,390   # ui-replicate: 11 PASS + 2 PNGs
 python3 sabri-sales/tests/test_lint.py                                    # sabri-sales: ALL PASS
+.venv/bin/python ui-replicate/tests/test_compare.py                        # ui-replicate exact mode: 12 PASS
+.venv/bin/python video-creation-editing/tests/test_video.py                # video-creation-editing: 11 PASS (needs ffmpeg)
+python3 software-engineering-qa/tests/test_qa.py                           # software-engineering-qa: 24 PASS
+.venv/bin/python frontend-build/tests/test_frontend.py                     # frontend-build: 8 PASS
+python3 software-engineering-qa/scripts/suspicious_scan.py .               # this repo: "HIGH": 0
 ```
 
 Then in Hermes: `/flyer-studio make a square + story flyer for 3xAgentic: "Your Front Desk Never Sleeps"`, or `/ui-replicate rebuild this Dribbble shot in Next.js + Tailwind: <link>`.
@@ -135,12 +144,35 @@ bash $S/verify.sh ~/ui/job/refs/ref_1440.png http://localhost:3000/dashboard ~/u
 
 `verify.sh` writes a side-by-side sheet (reference | build | mismatch), a 50/50 overlay and a JSON report, and exits `0` (pass) or `2` (below threshold). On the live pow-platform dashboard it scored ssim 0.75 / layout 0.85 / colour 95.0 (pass, `restyle` preset); the peer page scored 0.67 / 0.68 / 88.4 (fail; the gaps are listed in `ui-replicate/references/case-pow-platform.md`). New Python deps: `Pillow`, `numpy`. No API keys.
 
+## Working method, engineering and video skills (Oct 2026)
+
+`persistent-problem-solving` is how the agent should behave on every task, so load it first on anything bigger than a quick answer (or add "follow the persistent-problem-solving skill" to your Hermes profile). The other three are tools it reaches for:
+
+```bash
+# is this repo healthy and safe? (scan before npm install on code you don't know)
+python3 software-engineering-qa/scripts/repo_scan.py ~/code/app --build
+# does the interface work on phones and desktop?
+node software-engineering-qa/scripts/ui_check.mjs https://your-app.vercel.app/ --out ~/qa/ui --links
+# is it fast and stable on a phone?
+node frontend-build/scripts/web_vitals.mjs https://your-app.vercel.app/ --runs 3
+# copy a live site exactly: pixel + computed-style diff at three widths
+bash ui-replicate/scripts/verify_widths.sh https://reference.site http://localhost:3000 ~/ui/check --clean
+# edit a reel like a reference
+.venv/bin/python video-creation-editing/scripts/scene_cuts.py ref.mp4 --sheet ref_shots.jpg --json ref_cuts.json
+.venv/bin/python video-creation-editing/scripts/assemble.py edit.json --out final.mp4
+.venv/bin/python video-creation-editing/scripts/vcheck.py final.mp4 --target vertical --sheet sheet.jpg
+```
+
+Every script was run on a Debian 12 box with ffmpeg 5.1, Node 20, Playwright Chromium and Python 3.11 before it was committed; the tests above are the proof.
+
 ## Rules baked into the skills
 
 - Drafts only: the agent never emails, DMs, calls, texts or submits forms to leads or clients without John's OK.
 - No fabricated claims: stat flyers require a source, testimonial flyers require a real name, proposals leave `{{placeholders}}` instead of guessing.
 - No "exact match" claims without proof: ui-replicate reports its diff score and lists what still differs.
 - 3xAgentic is AI-only: never blockchain, crypto or Web3 wording.
+- No fake results: the agent verifies outputs itself (opens the file, loads the page, plays the video) and says plainly what did not work and what it tried.
+- Outward or irreversible steps (sending, posting, paying, deleting, deploying to production) wait for John's OK; everything reversible just gets done.
 - No secrets in this repo. Keys come from environment variables (`.env.example`).
 
 ## Licences
