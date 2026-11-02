@@ -1,0 +1,145 @@
+{
+ "slug": "04_components",
+ "title": "Components",
+ "kicker": "Lesson 4",
+ "project": "~/projects/my-first-app",
+ "preview": "http://localhost:5173",
+ "setup": {
+  "files": {
+   "src/App.jsx": "function App() {\n  return (\n    <div>\n      <h1>Hello, React!</h1>\n    </div>\n  );\n}\n\nexport default App;\n"
+  },
+  "delete": [
+   "src/Welcome.jsx"
+  ],
+  "open": [
+   "src/App.jsx"
+  ]
+ },
+ "beats": [
+  {
+   "slide": "<div class=\"kick\">Lesson 4</div><h1>Components</h1><div class=\"sub\">Build one piece of the screen, then reuse it.</div>",
+   "say": "In this lesson we learn components. A component is one reusable part of the screen, written as a function."
+  },
+  {
+   "hide_slide": true,
+   "cap": "Our app from the last lesson",
+   "do": [
+    {
+     "preview": "http://localhost:5173"
+    }
+   ],
+   "say": "Here is our app from the last lesson. On the left is the code, on the right is the page in the browser."
+  },
+  {
+   "cap": "Step 1: make a new file",
+   "do": [
+    {
+     "new_file": "src/Welcome.jsx"
+    }
+   ],
+   "say": "Inside the src folder, make a new file. Call it Welcome dot J S X. Component names start with a capital letter."
+  },
+  {
+   "cap": "Step 2: write the component",
+   "do": [
+    {
+     "type": "function Welcome() {\n  return <h2>Welcome to class!</h2>;\n}\n\nexport default Welcome;\n"
+    },
+    {
+     "save": true
+    }
+   ],
+   "say": "Now we write a function called Welcome. It returns some J S X: a heading that says, Welcome to class. Then we export it so other files can use it."
+  },
+  {
+   "cap": "Step 3: import it into App",
+   "do": [
+    {
+     "open": "src/App.jsx"
+    },
+    {
+     "goto": 1,
+     "col": "start"
+    },
+    {
+     "type": "import Welcome from \"./Welcome.jsx\";\n\n"
+    },
+    {
+     "goto": 6
+    },
+    {
+     "type": "\n      <Welcome />"
+    },
+    {
+     "save": true
+    }
+   ],
+   "say": "Open App dot J S X. At the top, import Welcome. Then use it like a tag, under the heading. Save, and look at the browser."
+  },
+  {
+   "cap": "Use it again: same component, many times",
+   "do": [
+    {
+     "type": "\n      <Welcome />\n      <Welcome />"
+    },
+    {
+     "save": true
+    }
+   ],
+   "say": "The best part: we can use it again and again. Two more Welcome tags, and the page shows three greetings."
+  },
+  {
+   "cap": "Watch the console",
+   "do": [
+    {
+     "console": "show"
+    },
+    {
+     "goto": 6
+    },
+    {
+     "type": "\n      <welcome />"
+    },
+    {
+     "save": true
+    },
+    {
+     "wait": 1.5
+    }
+   ],
+   "say": "Now a common mistake. If I write welcome with a small letter, React thinks it is a plain HTML tag, and the console warns us."
+  },
+  {
+   "cap": "Fix: capital letter",
+   "do": [
+    {
+     "select_lines": [
+      7,
+      7
+     ]
+    },
+    {
+     "type": "      <Welcome />\n"
+    },
+    {
+     "save": true
+    },
+    {
+     "wait": 1.0
+    },
+    {
+     "console": "clear"
+    },
+    {
+     "console": "hide"
+    }
+   ],
+   "say": "Put the capital letter back, save, and the warning is gone. Always start component names with a capital letter."
+  },
+  {
+   "cap": null,
+   "slide": "<div class=\"kick\">Your turn</div><h2>Practice</h2><ul><li>Make a <code>Footer</code> component</li><li>Show it at the bottom of <code>App</code></li><li>Use it twice</li></ul>",
+   "say": "Your turn. Make a Footer component, show it at the bottom of App, and use it twice. See you in the next lesson."
+  }
+ ]
+}
