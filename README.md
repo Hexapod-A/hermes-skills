@@ -18,6 +18,7 @@ Skills for John's self-hosted [Hermes Agent](https://github.com/nousresearch/her
 | **software-engineering-qa** | Code health and security plus real-browser testing: `repo_scan.py` (lint, types, tests, build, npm/pip audit, gitleaks), `suspicious_scan.py` (leaked keys, malicious install scripts, obfuscated code, exfil webhooks, VS Code auto-run tasks, code hidden in font/image files), `ui_check.mjs` (Chromium at 320/375/414/768/1440: console/JS errors, failed requests, sideways scroll with the element causing it, broken images, alt/labels/contrast/tap targets, dead links, screenshots). Code-review and deploy checklists. |
 | **frontend-build** | Production front ends (Next.js + Tailwind or plain HTML/CSS): tokens first, mobile first, every component state, images/fonts done right, then two gates: `ui_check.mjs` (0 errors at 5 widths) and `web_vitals.mjs` (LCP, CLS, TBT, JS size, oversized/unsized images, render-blocking files on a phone profile). Ships `base.css` tokens + a starter page that passes both. |
 | **video-creation-editing** | Short videos from a brief, a reference or raw clips: `scene_cuts.py` reads a reference edit (cut times, cuts per second, one frame per shot), `assemble.py` builds from a JSON edit list (cuts, speed ramps, Ken Burns, title cards, text overlays, xfade transitions, LUT/eq grade, voice-over, music ducking, burned captions, -14 LUFS), `vcheck.py` checks the file (size, codecs, loudness, silence, black/frozen frames, contact sheet), `export_size.py` fits WhatsApp's 16 MB. ffmpeg recipe book + editing guide. |
+| **tutorial-video-studio** | Course notes or a PDF into screen-recorded coding tutorials, one video per section, narrated in the teacher's own cloned voice: `voice_prep.py` cleans voice notes, `voice_clone.py` makes an instant clone (ElevenLabs, MiniMax fallback), `narrate.py` speaks each line, `rig.sh` runs a virtual screen with VS Code (code-server), the Vite dev server and a browser preview side by side, `record_lesson.py` types the code key by key, runs real terminal commands and shows real console errors while ffmpeg records, `assemble.py` adds a title card, holds frames for long lines, mixes the narration at -16 LUFS and fits WhatsApp's 16 MB, `qa_check.py` checks size, loudness, silent gaps, frames and that the code builds. |
 | **sabri-sales** | Sabri Suby's selling system, done honestly for 3x Agentic: buyer research, Godfather offer with John's three guarantees (50/50 milestone pay, audit fee credited, 6 months of fixes and upkeep), real scarcity (10 audits a week), and separate modules for outbound (cold email, cold DMs, follow-ups), content (TikTok/Reels scripts, X posts/threads, LinkedIn) and conversion (landing page, VSL, audit call). Built from transcripts of his long YouTube videos. Every draft is linted for banned words, unapproved numbers, prices and the wordmark. Drafts only. |
 | **profile/USER.md** | John's preferences in Hermes' memory format. |
 
@@ -39,6 +40,8 @@ Read from the Hermes Agent source and docs on 2026-10-04, `nousresearch/hermes-a
 # 1. system packages
 sudo apt update
 sudo apt install -y git curl ffmpeg python3 python3-venv python3-pip pandoc poppler-utils
+# tutorial-video-studio only: virtual screen + VS Code in the browser
+sudo apt install -y xvfb fonts-dejavu && curl -fsSL https://code-server.dev/install.sh | sh
 node -v || true   # need Node 18+; if missing or older:
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt install -y nodejs
 
@@ -50,7 +53,7 @@ cd ~/.hermes/skills/hermes-skills
 npm install
 npx playwright install --with-deps chromium
 
-# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, video-creation-editing, ui-replicate, rea UI pixel checks)
+# 4. Python deps in a repo-local venv (web-research, lead-gen, video-clipper, video-creation-editing, tutorial-video-studio, ui-replicate, rea UI pixel checks)
 python3 -m venv .venv
 .venv/bin/pip install -U pip
 .venv/bin/pip install -r requirements.txt
@@ -63,10 +66,10 @@ cat profile/USER.md >> ~/.hermes/memories/USER.md
 # 6. optional env vars (search keys etc.): add the block from .env.example to ~/.hermes/.env,
 #    then let terminal commands see them in ~/.hermes/config.yaml:
 #    terminal:
-#      env_passthrough: [SEARXNG_URL, BRAVE_API_KEY, SERPER_API_KEY, TAVILY_API_KEY, OSM_USER_AGENT, HF_TOKEN]
+#      env_passthrough: [SEARXNG_URL, BRAVE_API_KEY, SERPER_API_KEY, TAVILY_API_KEY, OSM_USER_AGENT, HF_TOKEN, ELEVENLABS_API_KEY, FAL_KEY]
 
 # 7. restart Hermes (new session) and check the skills are listed
-hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate|rea|sabri-sales"
+hermes skills list | grep -E "flyer-studio|web-research|lead-gen|outreach|video-clipper|docs-and-pdfs|ui-replicate|rea|sabri-sales|tutorial-video-studio"
 ```
 
 Using a named Hermes profile? Clone into `~/.hermes/profiles/<name>/skills/hermes-skills` instead, and use that profile's `memories/` folder. Prefer keeping the repo elsewhere? Clone to `~/hermes-skills` and add it under `skills.external_dirs` in `config.yaml`.
@@ -90,6 +93,7 @@ node docs-and-pdfs/scripts/build.mjs docs-and-pdfs/examples/notes-example.md --o
 python3 sabri-sales/tests/test_lint.py                                    # sabri-sales: ALL PASS
 .venv/bin/python ui-replicate/tests/test_compare.py                        # ui-replicate exact mode: 12 PASS
 .venv/bin/python video-creation-editing/tests/test_video.py                # video-creation-editing: 11 PASS (needs ffmpeg)
+.venv/bin/python tutorial-video-studio/tests/test_pipeline.py            # tutorial-video-studio: PASS lines + "all passed" (needs ffmpeg, no keys)
 python3 software-engineering-qa/tests/test_qa.py                           # software-engineering-qa: 24 PASS
 .venv/bin/python frontend-build/tests/test_frontend.py                     # frontend-build: 8 PASS
 python3 software-engineering-qa/scripts/suspicious_scan.py .               # this repo: "HIGH": 0
@@ -161,6 +165,12 @@ bash ui-replicate/scripts/verify_widths.sh https://reference.site http://localho
 .venv/bin/python video-creation-editing/scripts/scene_cuts.py ref.mp4 --sheet ref_shots.jpg --json ref_cuts.json
 .venv/bin/python video-creation-editing/scripts/assemble.py edit.json --out final.mp4
 .venv/bin/python video-creation-editing/scripts/vcheck.py final.mp4 --target vertical --sheet sheet.jpg
+# a coding tutorial in your own voice: clone once, then per lesson speak -> record -> assemble -> check
+.venv/bin/python tutorial-video-studio/scripts/voice_clone.py voice/sample.mp3 --auto --out voice/voice.json
+bash tutorial-video-studio/scripts/rig.sh start ~/projects/my-first-app
+.venv/bin/python tutorial-video-studio/scripts/narrate.py lesson.json --voice voice/voice.json --out ~/tutorial-work/04
+.venv/bin/python tutorial-video-studio/scripts/record_lesson.py lesson.json --out ~/tutorial-work/04
+.venv/bin/python tutorial-video-studio/scripts/assemble.py ~/tutorial-work/04 --out 04.mp4 --title "Components" --kicker "Lesson 4"
 ```
 
 Every script was run on a Debian 12 box with ffmpeg 5.1, Node 20, Playwright Chromium and Python 3.11 before it was committed; the tests above are the proof.
