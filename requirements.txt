@@ -10,3 +10,4 @@ yt-dlp>=2025.1.1
 faster-whisper>=1.0
 Pillow>=10.0          # ui-replicate image scripts
 numpy>=1.26           # ui-replicate SSIM / palette maths
+playwright>=1.45      # tutorial-video-studio recorder (drives the rig's Chromium over CDP)
